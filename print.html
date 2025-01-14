@@ -2259,71 +2259,71 @@ the code must be correct <em>without even testing it</em>.</li>
 the corresponding feature (<em>e.g.,</em> a system call) is partially implemented.
 This is a case where all of the above requirements are met,
 so adding them as dead code is perfectly acceptable.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="boterinas"><a class="header" href="#boterinas">Boterinas</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="botros"><a class="header" href="#botros">Botros</a></h1>
 <h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
-<p><code>@boterinas</code> is a general-purpose bot designed for a wide variety of tasks in Astros. It streamlines maintenance tasks to enhance workflow efficiency.</p>
-<p>Commands are issued by writing comments that start with the text <code>@boterinas</code>. The available commands depend on which repository you are using. The main Astros repository contains a <code>triagebot.toml</code> file where you can see which features are enabled.</p>
-<p>Commands for GitHub issues or pull requests should be issued by writing <code>@boterinas</code> followed by the command anywhere in the comment. Note that <code>@boterinas</code> will ignore commands in Markdown code blocks, inline code spans, or blockquotes. You can enter multiple <code>@boterinas</code> commands in a single comment.</p>
+<p><code>@botros</code> is a general-purpose bot designed for a wide variety of tasks in Astros. It streamlines maintenance tasks to enhance workflow efficiency.</p>
+<p>Commands are issued by writing comments that start with the text <code>@botros</code>. The available commands depend on which repository you are using. The main Astros repository contains a <code>triagebot.toml</code> file where you can see which features are enabled.</p>
+<p>Commands for GitHub issues or pull requests should be issued by writing <code>@botros</code> followed by the command anywhere in the comment. Note that <code>@botros</code> will ignore commands in Markdown code blocks, inline code spans, or blockquotes. You can enter multiple <code>@botros</code> commands in a single comment.</p>
 <p>For example, you can claim an issue and add a label in the same comment.</p>
-<pre><code class="language-markdown">@boterinas claim
-@boterinas label C-enhancement
+<pre><code class="language-markdown">@botros claim
+@botros label C-enhancement
 </code></pre>
-<p>Additionally, <code>@boterinas</code> allows for editing comments. If you don't change the text of a command, the edit will be ignored. However, if you modify an existing command or add new ones, those commands will be processed.</p>
-<p>Below, you'll find a comprehensive guide on how to use <code>@boterinas</code> effectively.</p>
+<p>Additionally, <code>@botros</code> allows for editing comments. If you don't change the text of a command, the edit will be ignored. However, if you modify an existing command or add new ones, those commands will be processed.</p>
+<p>Below, you'll find a comprehensive guide on how to use <code>@botros</code> effectively.</p>
 <h2 id="commands-and-usage"><a class="header" href="#commands-and-usage">Commands and Usage</a></h2>
 <h3 id="workflow-management"><a class="header" href="#workflow-management">Workflow Management</a></h3>
 <ul>
-<li><strong><code>@boterinas rerun</code></strong><br />
+<li><strong><code>@botros rerun</code></strong><br />
 Restarts the workflow of the current pull request if it has failed unexpectedly. Only the author of the pull request can use this command.</li>
 </ul>
 <h3 id="issue-and-pull-request-management"><a class="header" href="#issue-and-pull-request-management">Issue and Pull Request Management</a></h3>
 <ul>
 <li>
-<p><strong><code>@boterinas claim</code></strong><br />
+<p><strong><code>@botros claim</code></strong><br />
 Assigns the issue or pull request to yourself.</p>
 </li>
 <li>
-<p><strong><code>@boterinas release-assignment</code></strong><br />
+<p><strong><code>@botros release-assignment</code></strong><br />
 Removes the current assignee from an issue or pull request. This command can only be executed by the current assignee or a team member.</p>
 </li>
 <li>
-<p><strong><code>@boterinas assign @user</code></strong><br />
+<p><strong><code>@botros assign @user</code></strong><br />
 Assigns a specific user to the issue or pull request. Only team members have permission to assign other users.</p>
 </li>
 </ul>
 <h3 id="label-management"><a class="header" href="#label-management">Label Management</a></h3>
 <ul>
 <li>
-<p><strong><code>@boterinas label &lt;label&gt;</code></strong><br />
+<p><strong><code>@botros label &lt;label&gt;</code></strong><br />
 Adds a label to the issue or pull request.<br />
-<em>Example:</em> <code>@boterinas label C-enhancement C-rfc</code></p>
+<em>Example:</em> <code>@botros label C-enhancement C-rfc</code></p>
 </li>
 <li>
-<p><strong><code>@boterinas label -&lt;label&gt;</code></strong><br />
+<p><strong><code>@botros label -&lt;label&gt;</code></strong><br />
 Removes a label from the issue or pull request.<br />
-<em>Example:</em> <code>@boterinas label -C-enhancement -C-bug</code></p>
+<em>Example:</em> <code>@botros label -C-enhancement -C-bug</code></p>
 </li>
 </ul>
 <h3 id="status-indicators"><a class="header" href="#status-indicators">Status Indicators</a></h3>
 <ul>
 <li>
-<p><strong><code>@boterinas author</code></strong><br />
+<p><strong><code>@botros author</code></strong><br />
 Indicates that a pull request is waiting on the author. It assigns the <code>S-waiting-on-author</code> label and removes both <code>S-waiting-on-review</code> and <code>S-blocked</code>, if present.</p>
 </li>
 <li>
-<p><strong><code>@boterinas blocked</code></strong><br />
+<p><strong><code>@botros blocked</code></strong><br />
 Marks a pull request as blocked on something.</p>
 </li>
 <li>
-<p><strong><code>@boterinas ready</code></strong><br />
-Indicates that a pull request is ready for review. This command can also be invoked with the aliases <code>@boterinas review</code> or <code>@boterinas reviewer</code>.</p>
+<p><strong><code>@botros ready</code></strong><br />
+Indicates that a pull request is ready for review. This command can also be invoked with the aliases <code>@botros review</code> or <code>@botros reviewer</code>.</p>
 </li>
 </ul>
 <h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
 <ul>
 <li>Only team members can assign users or remove assignments.</li>
 <li>Labels are crucial for organizing issues and pull requests, so ensure they are used consistently and accurately.</li>
-<li>For any issues or questions regarding <code>@boterinas</code>, please reach out to the team for support.</li>
+<li>For any issues or questions regarding <code>@botros</code>, please reach out to the team for support.</li>
 </ul>
 
                     </main>
