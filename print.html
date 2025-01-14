@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>The Asterinas Book</title>
+        <title>The Astros Book</title>
         <meta name="robots" content="noindex">
 
 
@@ -121,7 +121,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">The Asterinas Book</h1>
+                    <h1 class="menu-title">The Astros Book</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -153,49 +153,49 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="the-asterinas-book"><a class="header" href="#the-asterinas-book">The Asterinas Book</a></h1>
+                        <h1 id="the-astros-book"><a class="header" href="#the-astros-book">The Astros Book</a></h1>
 <p align="center">
-    <img src="images/logo_en.svg" alt="asterinas-logo" width="620"><br>
+    <img src="images/logo_en.svg" alt="astros-logo" width="620"><br>
 </p>
-<p>Welcome to the documentation for Asterinas,
+<p>Welcome to the documentation for Astros,
 an open-source project and community
 focused on developing cutting-edge Rust OS kernels.</p>
 <h2 id="book-structure"><a class="header" href="#book-structure">Book Structure</a></h2>
 <p>This book is divided into five distinct parts:</p>
-<h4 id="part-1-asterinas-kernel"><a class="header" href="#part-1-asterinas-kernel"><a href="kernel/">Part 1: Asterinas Kernel</a></a></h4>
-<p>Explore the modern OS kernel at the heart of Asterinas.
+<h4 id="part-1-astros-kernel"><a class="header" href="#part-1-astros-kernel"><a href="kernel/">Part 1: Astros Kernel</a></a></h4>
+<p>Explore the modern OS kernel at the heart of Astros.
 Designed to realize the full potential of Rust,
-Asterinas Kernel implements the Linux ABI in a safe and efficient way.
+Astros Kernel implements the Linux ABI in a safe and efficient way.
 This means it can seamlessly replace Linux,
 offering enhanced safety and security.</p>
-<h4 id="part-2-asterinas-ostd"><a class="header" href="#part-2-asterinas-ostd"><a href="ostd/">Part 2: Asterinas OSTD</a></a></h4>
-<p>The Asterinas OSTD lays down a minimalistic, powerful, and solid foundation
+<h4 id="part-2-astros-kstd"><a class="header" href="#part-2-astros-kstd"><a href="kstd/">Part 2: Astros KSTD</a></a></h4>
+<p>The Astros KSTD lays down a minimalistic, powerful, and solid foundation
 for OS development.
 It's akin to Rust's <code>std</code> crate
 but crafted for the demands of <em>safe</em> Rust OS development.
-The Asterinas Kernel is built on this very OSTD.</p>
-<h4 id="part-3-asterinas-osdk"><a class="header" href="#part-3-asterinas-osdk"><a href="osdk/guide/">Part 3: Asterinas OSDK</a></a></h4>
-<p>The OSDK is a command-line tool
+The Astros Kernel is built on this very KSTD.</p>
+<h4 id="part-3-astros-ksdk"><a class="header" href="#part-3-astros-ksdk"><a href="ksdk/guide/">Part 3: Astros KSDK</a></a></h4>
+<p>The KSDK is a command-line tool
 that streamlines the workflow to
 create, build, test, and run Rust OS projects
-that are built upon Asterinas OSTD.
+that are built upon Astros KSTD.
 Developed specifically for OS developers,
 it extends Rust's Cargo tool to better suite their specific needs.
-OSDK is instrumental in the development of Asterinas Kernel.</p>
-<h4 id="part-4-contributing-to-asterinas"><a class="header" href="#part-4-contributing-to-asterinas"><a href="to-contribute/">Part 4: Contributing to Asterinas</a></a></h4>
-<p>Asterinas is in its early stage
+KSDK is instrumental in the development of Astros Kernel.</p>
+<h4 id="part-4-contributing-to-astros"><a class="header" href="#part-4-contributing-to-astros"><a href="to-contribute/">Part 4: Contributing to Astros</a></a></h4>
+<p>Astros is in its early stage
 and welcomes your contributions!
 This part provides guidance
-on how you can become an integral part of the Asterinas project.</p>
+on how you can become an integral part of the Astros project.</p>
 <h4 id="part-5-requests-for-comments-rfcs"><a class="header" href="#part-5-requests-for-comments-rfcs"><a href="rfcs/">Part 5: Requests for Comments (RFCs)</a></a></h4>
-<p>Significant decisions in Asterinas are made through a transparent RFC process.
+<p>Significant decisions in Astros are made through a transparent RFC process.
 This part describes the RFC process
 and archives all approvaed RFCs.</p>
 <h2 id="licensing"><a class="header" href="#licensing">Licensing</a></h2>
-<p>Asterinas's source code and documentation primarily use the
-<a href="https://github.com/asterinas/asterinas/blob/main/LICENSE-MPL">Mozilla Public License (MPL), Version 2.0</a>.
+<p>Astros's source code and documentation primarily use the
+<a href="https://github.com/astros/astros/blob/main/LICENSE-MPL">Mozilla Public License (MPL), Version 2.0</a>.
 Select components are under more permissive licenses,
-detailed <a href="https://github.com/asterinas/asterinas/blob/main/.licenserc.yaml">here</a>.</p>
+detailed <a href="https://github.com/astros/astros/blob/main/.licenserc.yaml">here</a>.</p>
 <p>Our choice of the <a href="https://www.tldrlegal.com/license/mozilla-public-license-2-0-mpl-2">weak-copyleft</a> MPL license reflects a strategic balance:</p>
 <ol>
 <li>
@@ -218,28 +218,28 @@ the MPL permits the linking of MPL-covered files with proprietary code.</p>
 </ol>
 <p>In conclusion, we believe that
 MPL is the best choice
-to foster a vibrant, robust, and inclusive open-source community around Asterinas.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="asterinas-kernel"><a class="header" href="#asterinas-kernel">Asterinas Kernel</a></h1>
+to foster a vibrant, robust, and inclusive open-source community around Astros.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="astros-kernel"><a class="header" href="#astros-kernel">Astros Kernel</a></h1>
 <h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
-<p>Asterinas is a <em>secure</em>, <em>fast</em>, and <em>general-purpose</em> OS kernel
+<p>Astros is a <em>secure</em>, <em>fast</em>, and <em>general-purpose</em> OS kernel
 that provides an <em>Linux-compatible</em> ABI.
 It can serve as a seamless replacement for Linux
 while enhancing <em>memory safety</em> and <em>developer friendliness</em>.</p>
 <ul>
 <li>
-<p>Asterinas prioritizes memory safety
+<p>Astros prioritizes memory safety
 by employing Rust as its sole programming language
 and limiting the use of <em>unsafe Rust</em>
 to a clearly defined and minimal Trusted Computing Base (TCB).
 This innovative approach,
 known as <a href="kernel/the-framekernel-architecture.html">the framekernel architecture</a>,
-establishes Asterinas as a more secure and dependable kernel option.</p>
+establishes Astros as a more secure and dependable kernel option.</p>
 </li>
 <li>
-<p>Asterinas surpasses Linux in terms of developer friendliness.
+<p>Astros surpasses Linux in terms of developer friendliness.
 It empowers kernel developers to
 (1) utilize the more productive Rust programming language,
-(2) leverage a purpose-built toolkit called <a href="kernel/">OSDK</a> to streamline their workflows,
+(2) leverage a purpose-built toolkit called <a href="kernel/">KSDK</a> to streamline their workflows,
 and (3) choose between releasing their kernel modules as open source
 or keeping them proprietary,
 thanks to the flexibility offered by <a href="kernel/../">MPL</a>.</p>
@@ -247,17 +247,17 @@ thanks to the flexibility offered by <a href="kernel/../">MPL</a>.</p>
 </ul>
 <p>While the journey towards a production-grade OS kernel can be challenging,
 we are steadfastly progressing towards our goal.
-Currently, Asterinas only supports x86-64 VMs.
+Currently, Astros only supports x86-64 VMs.
 However, <a href="kernel/roadmap.html">our aim for 2024</a> is
-to make Asterinas production-ready on x86-64
+to make Astros production-ready on x86-64
 for both bare-metal and VM environments.</p>
 <h2 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h2>
 <p>Get yourself an x86-64 Linux machine with Docker installed.
-Follow the three simple steps below to get Asterinas up and running.</p>
+Follow the three simple steps below to get Astros up and running.</p>
 <ol>
 <li>Download the latest source code.</li>
 </ol>
-<pre><code class="language-bash">git clone https://github.com/asterinas/asterinas
+<pre><code class="language-bash">git clone https://github.com/astros/astros
 </code></pre>
 <ol start="2">
 <li>Run a Docker container as the development environment.</li>
@@ -265,19 +265,19 @@ Follow the three simple steps below to get Asterinas up and running.</p>
 <pre><code class="language-bash">docker run -it --privileged \
                --network=host \
                --device=/dev/kvm \
-               -v $(pwd)/asterinas:/root/asterinas \
-               asterinas/asterinas:0.11.1
+               -v $(pwd)/astros:/root/astros \
+               astros/astros:0.11.1
 </code></pre>
 <ol start="3">
-<li>Inside the container, go to the project folder to build and run Asterinas.</li>
+<li>Inside the container, go to the project folder to build and run Astros.</li>
 </ol>
 <pre><code class="language-bash">make build
 make run
 </code></pre>
-<p>If everything goes well, Asterinas is now up and running inside a VM.</p>
+<p>If everything goes well, Astros is now up and running inside a VM.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="advanced-build-and-test-instructions"><a class="header" href="#advanced-build-and-test-instructions">Advanced Build and Test Instructions</a></h1>
 <h2 id="user-mode-unit-tests"><a class="header" href="#user-mode-unit-tests">User-Mode Unit Tests</a></h2>
-<p>Asterinas consists of many crates,
+<p>Astros consists of many crates,
 some of which do not require a VM environment
 and can be tested with the standard <code>cargo test</code>.
 They are listed in the root <code>Makefile</code>
@@ -286,24 +286,24 @@ and can be tested together through the following Make command.</p>
 </code></pre>
 <p>To test an individual crate, enter the directory of the crate and invoke <code>cargo test</code>.</p>
 <h3 id="kernel-mode-unit-tests"><a class="header" href="#kernel-mode-unit-tests">Kernel-Mode Unit Tests</a></h3>
-<p>Many crates in Asterinas do require a VM environment to be tested.
-The unit tests for these crates are empowered by OSDK.</p>
+<p>Many crates in Astros do require a VM environment to be tested.
+The unit tests for these crates are empowered by KSDK.</p>
 <pre><code class="language-bash">make ktest
 </code></pre>
-<p>To test an individual crate in kernel mode, enter the directory of the crate and invoke <code>cargo osdk test</code>.</p>
-<pre><code class="language-bash">cd asterinas/ostd
-cargo osdk test
+<p>To test an individual crate in kernel mode, enter the directory of the crate and invoke <code>cargo ksdk test</code>.</p>
+<pre><code class="language-bash">cd astros/kstd
+cargo ksdk test
 </code></pre>
 <h2 id="integration-test"><a class="header" href="#integration-test">Integration Test</a></h2>
 <h3 id="general-test"><a class="header" href="#general-test">General Test</a></h3>
-<p>The following command builds and runs the test binaries in <code>test/apps</code> directory on Asterinas.</p>
+<p>The following command builds and runs the test binaries in <code>test/apps</code> directory on Astros.</p>
 <pre><code class="language-bash">make run AUTO_TEST=test
 </code></pre>
 <h3 id="syscall-test"><a class="header" href="#syscall-test">Syscall Test</a></h3>
-<p>The following command builds and runs the syscall test binaries on Asterinas.</p>
+<p>The following command builds and runs the syscall test binaries on Astros.</p>
 <pre><code class="language-bash">make run AUTO_TEST=syscall
 </code></pre>
-<p>To run system call tests interactively, start an instance of Asterinas with the system call tests built and installed.</p>
+<p>To run system call tests interactively, start an instance of Astros with the system call tests built and installed.</p>
 <pre><code class="language-bash">make run BUILD_SYSCALL_TEST=1
 </code></pre>
 <p>Then, in the interactive shell, run the following script to start the syscall tests.</p>
@@ -311,15 +311,15 @@ cargo osdk test
 </code></pre>
 <h2 id="debug"><a class="header" href="#debug">Debug</a></h2>
 <h3 id="using-gdb-to-debug"><a class="header" href="#using-gdb-to-debug">Using GDB to Debug</a></h3>
-<p>To debug Asterinas via <a href="https://qemu-project.gitlab.io/qemu/system/gdb.html">QEMU GDB support</a>,
-you can compile Asterinas in the debug profile,
-start an Asterinas instance and run the GDB interactive shell in another terminal.</p>
-<p>Start a GDB-enabled VM of Asterinas with OSDK and wait for debugging connection:</p>
+<p>To debug Astros via <a href="https://qemu-project.gitlab.io/qemu/system/gdb.html">QEMU GDB support</a>,
+you can compile Astros in the debug profile,
+start an Astros instance and run the GDB interactive shell in another terminal.</p>
+<p>Start a GDB-enabled VM of Astros with KSDK and wait for debugging connection:</p>
 <pre><code class="language-bash">make gdb_server
 </code></pre>
 <p>The server will listen at the default address specified in <code>Makefile</code>, i.e., a local TCP port <code>:1234</code>.
 Change the address in <code>Makefile</code> for your convenience,
-and check <code>cargo osdk run -h</code> for more details about the address.</p>
+and check <code>cargo ksdk run -h</code> for more details about the address.</p>
 <p>Two options are provided to interact with the debug server.</p>
 <ul>
 <li>
@@ -329,7 +329,7 @@ and check <code>cargo osdk run -h</code> for more details about the address.</p>
 </li>
 <li>
 <p>VS Code: <a href="https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb">CodeLLDB</a> extension is required.
-After starting a debug server with OSDK from the shell with <code>make gdb_server</code>,
+After starting a debug server with KSDK from the shell with <code>make gdb_server</code>,
 a temporary <code>launch.json</code> is generated under <code>.vscode</code>.
 Your previous launch configs will be restored after the server is down.
 Press <code>F5</code>(Run and Debug) to start a debug session via VS Code.
@@ -340,15 +340,15 @@ then it will continue until reaching your first breakpoint.</p>
 <p>Note that if debugging with KVM enabled, you must use hardware assisted breakpoints. See "hbreak" in
 <a href="https://ftp.gnu.org/old-gnu/Manuals/gdb/html_node/gdb_28.html">the GDB manual</a> for details.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="intel-tdx"><a class="header" href="#intel-tdx">Intel TDX</a></h1>
-<p>Asterinas can serve as a secure guest OS for Intel TDX-protected virtual machines (VMs).
+<p>Astros can serve as a secure guest OS for Intel TDX-protected virtual machines (VMs).
 This documentation describes
-how Asterinas can be run and tested easily on a TDX-enabled Intel server.</p>
+how Astros can be run and tested easily on a TDX-enabled Intel server.</p>
 <p>Intel TDX (Trust Domain Extensions) is a Trusted Execution Environment (TEE) technology
 that enhances VM security
 by creating isolated, hardware-enforced trust domains
 with encrypted memory, secure initialization, and attestation mechanisms.
 For more information about Intel TDX, jump to the last section.</p>
-<h2 id="why-choose-asterinas-for-intel-tdx"><a class="header" href="#why-choose-asterinas-for-intel-tdx">Why choose Asterinas for Intel TDX</a></h2>
+<h2 id="why-choose-astros-for-intel-tdx"><a class="header" href="#why-choose-astros-for-intel-tdx">Why choose Astros for Intel TDX</a></h2>
 <p>VM TEEs such as Intel TDX deserve a more secure option for its guest OS than Linux.
 Linux,
 with its inherent memory safety issues and large Trusted Computing Base (TCB),
@@ -361,11 +361,11 @@ from the host (via hypercalls, MMIO, and etc.).
 These untrusted inputs create new attack surfaces
 that can be exploited through memory safety vulnerabilities,
 known as Iago attacks.</p>
-<p>Asterinas offers greater memory safety than Linux,
+<p>Astros offers greater memory safety than Linux,
 particularly against Iago attacks.
 Thanks to its framekernel architecture,
-the memory safety of Asterinas relies solely on the Asterinas Framework,
-excluding the safe device drivers built on top of the Asterinas Framework
+the memory safety of Astros relies solely on the Astros Framework,
+excluding the safe device drivers built on top of the Astros Framework
 that may handle untrusted inputs from the host.
 For more information, see <a href="https://www.youtube.com/watch?v=3AQ5lpXujGo">our talk on OC3'24</a>.</p>
 <h2 id="prepare-the-intel-tdx-environment"><a class="header" href="#prepare-the-intel-tdx-environment">Prepare the Intel TDX Environment</a></h2>
@@ -380,31 +380,31 @@ you can type:</p>
 <pre><code class="language-bash">[   20.507296] tdx: TDX module initialized.
 </code></pre>
 <p><code>TDX module initialized</code> means TDX module is loaded successfully.</p>
-<h2 id="build-and-run-asterinas"><a class="header" href="#build-and-run-asterinas">Build and run Asterinas</a></h2>
+<h2 id="build-and-run-astros"><a class="header" href="#build-and-run-astros">Build and run Astros</a></h2>
 <ol>
 <li>Download the latest source code.</li>
 </ol>
-<pre><code class="language-bash">git clone https://github.com/asterinas/asterinas
+<pre><code class="language-bash">git clone https://github.com/astros/astros
 </code></pre>
 <ol start="2">
 <li>Run a Docker container as the development environment.</li>
 </ol>
-<pre><code class="language-bash">docker run -it --privileged --network=host --device=/dev/kvm -v $(pwd)/asterinas:/root/asterinas asterinas/asterinas:0.11.1-tdx
+<pre><code class="language-bash">docker run -it --privileged --network=host --device=/dev/kvm -v $(pwd)/astros:/root/astros astros/astros:0.11.1-tdx
 </code></pre>
 <ol start="3">
 <li>Inside the container,
-go to the project folder to build and run Asterinas.</li>
+go to the project folder to build and run Astros.</li>
 </ol>
 <pre><code class="language-bash">make run INTEL_TDX=1
 </code></pre>
 <p>If everything goes well,
-Asterinas is now up and running inside a TD.</p>
+Astros is now up and running inside a TD.</p>
 <h2 id="using-gdb-to-debug-1"><a class="header" href="#using-gdb-to-debug-1">Using GDB to Debug</a></h2>
 <p>A Trust Domain (TD) is debuggable if its <code>ATTRIBUTES.DEBUG</code> bit is 1.
 In this mode, the host VMM can use Intel TDX module functions
 to read and modify TD VCPU state and TD private memory,
 which are not accessible when the TD is non-debuggable.</p>
-<p>Start Asterinas in a GDB-enabled TD and wait for debugging connection:</p>
+<p>Start Astros in a GDB-enabled TD and wait for debugging connection:</p>
 <pre><code class="language-bash">make gdb_server INTEL_TDX=1
 </code></pre>
 <p>Behind the scene, this command adds <code>debug=on</code> configuration to the QEMU parameters
@@ -450,7 +450,7 @@ please refer to <a href="https://www.intel.com/content/www/us/en/developer/tools
 <blockquote>
 <p>The security of a microkernel, the speed of a monolithic kernel.</p>
 </blockquote>
-<p>Asterinas introduces a novel OS architecture called <em>framekernel</em>,
+<p>Astros introduces a novel OS architecture called <em>framekernel</em>,
 which unleashes the full power of Rust
 to bring the best of both monolithic kernels and microkernels.</p>
 <p>Within the framekernel architecture,
@@ -475,7 +475,7 @@ the single address space allows different parts of the kernel
 to communicate in the most efficient means,
 e.g., function calls and shared memory.
 Thanks to the framekernel architecture,
-Asterinas can offer both exceptional performance and enhanced safety.</p>
+Astros can offer both exceptional performance and enhanced safety.</p>
 <p><img src="kernel/../images/a_comparison_between_os_archs.svg" alt="A comparison between different OS architectures" /></p>
 <h2 id="requirements-for-the-os-framework"><a class="header" href="#requirements-for-the-os-framework">Requirements for the OS Framework</a></h2>
 <p>While the concept of framekernel is straightforward,
@@ -522,9 +522,9 @@ as <a href="https://monomorph.is/posts/zero-cost-abstractions/">zero-cost abstra
 </ul>
 <p>Fortunately, our efforts
 to design and implement an OS framework meeting these standards
-have borne fruit in the form of the <a href="kernel/../ostd/">Asterinas OSTD</a>.
+have borne fruit in the form of the <a href="kernel/../kstd/">Astros KSTD</a>.
 Using this framework as a foundation,
-we have developed the Asterinas Kernel;
+we have developed the Astros Kernel;
 this framework also enables others to create their own framekernels,
 with different goals and tradeoffs.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="linux-compatibility"><a class="header" href="#linux-compatibility">Linux Compatibility</a></h1>
@@ -532,16 +532,16 @@ with different goals and tradeoffs.</p>
 <p>"We don't break user space."</p>
 <p>--- Linus Torvalds</p>
 </blockquote>
-<p>Asterinas is dedicated to maintaining compatibility with the Linux ABI,
+<p>Astros is dedicated to maintaining compatibility with the Linux ABI,
 ensuring that applications and administrative tools
-designed for Linux can seamlessly operate within Asterinas.
+designed for Linux can seamlessly operate within Astros.
 While we prioritize compatibility,
-it is important to note that Asterinas does not,
+it is important to note that Astros does not,
 nor will it in the future,
 support the loading of Linux kernel modules.</p>
 <h2 id="system-calls"><a class="header" href="#system-calls">System Calls</a></h2>
 <p>At the time of writing,
-Asterinas implements 177 out of the 336 system calls
+Astros implements 177 out of the 336 system calls
 provided by Linux on x86-64 architecture.</p>
 <div class="table-wrapper"><table><thead><tr><th>Numbers</th><th>Names</th><th>Is Implemented</th></tr></thead><tbody>
 <tr><td>0</td><td>read</td><td>✅</td></tr>
@@ -897,7 +897,7 @@ provided by Linux on x86-64 architecture.</p>
 <li><a href="https://www.kernel.org/doc/html/v5.4/x86/boot.html#efi-handover-protocol">Linux EFI handover</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="roadmap"><a class="header" href="#roadmap">Roadmap</a></h1>
-<p>Asterinas is a general-purpose OS kernel
+<p>Astros is a general-purpose OS kernel
 designed to support multiple CPU architectures and a variety of use cases.
 Currently, it only supports x86-64 VMs.
 Our roadmap includes the following plans:</p>
@@ -908,7 +908,7 @@ Our roadmap includes the following plans:</p>
 <h2 id="target-early-use-cases"><a class="header" href="#target-early-use-cases">Target Early Use Cases</a></h2>
 <p>One of the biggest challenges for a new OS kernel is driver support.
 Linux has been widely accepted due to its wide range of hardware support.
-As a newcomer, Asterinas faces the challenge of implementing drivers
+As a newcomer, Astros faces the challenge of implementing drivers
 for all devices on a target platform,
 which would take a significant amount of time.</p>
 <p>To address this obstacle,
@@ -917,14 +917,14 @@ In an IaaS (Infrastructure-as-a-Service) cloud, workloads of different tenants a
 or <a href="https://dl.acm.org/doi/10.1145/3373376.3378507">VM-style bare-metal servers</a>
 for maximum isolation and elasticity.
 The main device driver requirement for the VM environment is virtio,
-which is already supported by Asterinas.
-Therefore, using Asterinas as the guest OS of a VM
+which is already supported by Astros.
+Therefore, using Astros as the guest OS of a VM
 or the host OS of a VM-style bare-metal server in production
 looks quite feasible in the near future.</p>
-<p>Asterinas provides high assurance of memory safety
+<p>Astros provides high assurance of memory safety
 thanks to <a href="kernel/the-framekernel-architecture.html">the framekernel architecture</a>.
 Thus, in the cloud setting,
-Asterinas is attractive for usage scenarios
+Astros is attractive for usage scenarios
 where Linux ABI is necessary but Linux itself is considered insecure
 due to its large Trusted Computing Base (TCB) and memory unsafety.
 Specifically, we are focusing on two use cases:</p>
@@ -935,7 +935,7 @@ All major CPU architectures have introduced
 VM-based Trusted Execution Environment (TEE) technology,
 such as ARM CCA, AMD SEV, and Intel TDX.
 Applications running inside TEEs often handle private or sensitive data.
-By running on a lightweight and memory-safe OS kernel like Asterinas,
+By running on a lightweight and memory-safe OS kernel like Astros,
 they can greatly enhance security and privacy.</p>
 </li>
 <li>
@@ -945,11 +945,11 @@ The popular container runtimes like runc and Docker rely on
 the OS-level isolation enforced by Linux.
 However, <a href="https://dl.acm.org/doi/10.1145/3274694.3274720">Linux containers are prone to privilege escalation bugs</a>.
 With its safety and security prioritized architecture,
-Asterinas can offer more reliable OS-level isolation,
+Astros can offer more reliable OS-level isolation,
 making it ideal for secure containers.</p>
 </li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="asterinas-ostd"><a class="header" href="#asterinas-ostd">Asterinas OSTD</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="astros-kstd"><a class="header" href="#astros-kstd">Astros KSTD</a></h1>
 <blockquote>
 <p>Confucious remarked,
 "I could follow whatever my heart desired
@@ -957,7 +957,7 @@ without transgressing the law."</p>
 <p>子曰：
 "从心所欲，不逾矩。"</p>
 </blockquote>
-<p>With the Asterinas OSTD (Operating System Standard Library),
+<p>With the Astros KSTD (Operating System Standard Library),
 you don't have to learn the dark art of unsafe Rust programming
 and risk shooting yourself in the foot.
 You will be doing whatever your heart desires,
@@ -965,7 +965,7 @@ and be confident that your kernel will never crash
 or be hacked due to undefined behaviors,
 even if today marks your Day 1 as a Rust programmer.</p>
 <h2 id="apis"><a class="header" href="#apis">APIs</a></h2>
-<p>Asterinas OSTD stands
+<p>Astros KSTD stands
 as a powerful and solid foundation for safe kernel development,
 providing high-level safe Rust APIs that are</p>
 <ol>
@@ -984,32 +984,32 @@ providing high-level safe Rust APIs that are</p>
 <li>Synchronization (e.g., locking and sleeping)</li>
 </ul>
 <p>To explore how these APIs come into play,
-see <a href="ostd/a-100-line-kernel.html">the example of a 100-line kernel in safe Rust</a>.</p>
-<p>The OSTD APIs have been extensively documented.
-You can access the comprehensive API documentation by visiting the <a href="https://docs.rs/ostd/latest/ostd">docs.rs</a>.</p>
+see <a href="kstd/a-100-line-kernel.html">the example of a 100-line kernel in safe Rust</a>.</p>
+<p>The KSTD APIs have been extensively documented.
+You can access the comprehensive API documentation by visiting the <a href="https://docs.rs/kstd/latest/kstd">docs.rs</a>.</p>
 <h2 id="four-requirements-satisfied"><a class="header" href="#four-requirements-satisfied">Four Requirements Satisfied</a></h2>
-<p>In designing and implementing OSTD,
+<p>In designing and implementing KSTD,
 we have risen to meet the challenge of
-fulfilling <a href="ostd/../kernel/the-framekernel-architecture.html">the aforementioned four criteria as demanded by the framekernel architecture</a>.</p>
-<p>Expressiveness is evident through Asterinas Kernel itself,
+fulfilling <a href="kstd/../kernel/the-framekernel-architecture.html">the aforementioned four criteria as demanded by the framekernel architecture</a>.</p>
+<p>Expressiveness is evident through Astros Kernel itself,
 where all system calls,
 file systems,
 network protocols,
 and device drivers (e.g., Virtio drivers)
 have been implemented in safe Rust
-by leveraging OSTD.</p>
+by leveraging KSTD.</p>
 <p>Adopting a minimalist philosophy,
-OSTD has a small codebase.
-At its core lies the <code>ostd</code> crate,
+KSTD has a small codebase.
+At its core lies the <code>kstd</code> crate,
 currently encompassing about 10K lines of code - a figure
 that is even smaller than those of many microkernels.
-As OSTD evolves,
+As KSTD evolves,
 its codebase will expand,
 albeit at a relatively slow rate
 in comparison to the OS services layered atop it.</p>
-<p>The OSTD's efficiency is measurable
+<p>The KSTD's efficiency is measurable
 through the performance metrics of its APIs
-and the system calls of Asterinas Kernel.
+and the system calls of Astros Kernel.
 No intrinsic limitations have been identified within Rust
 or the framekernel architecture
 that could hinder kernel performance.</p>
@@ -1025,7 +1025,7 @@ eyes of the community to catch any potential flaws
 in the implementation.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="example-writing-a-kernel-in-about-100-lines-of-safe-rust"><a class="header" href="#example-writing-a-kernel-in-about-100-lines-of-safe-rust">Example: Writing a Kernel in About 100 Lines of Safe Rust</a></h1>
 <p>To give you a sense of
-how Asterinas OSTD enables writing kernels in safe Rust,
+how Astros KSTD enables writing kernels in safe Rust,
 we will show a new kernel in about 100 lines of safe Rust.</p>
 <p>Our new kernel will be able to run the following Hello World program.</p>
 <pre><code class="language-s"># SPDX-License-Identifier: MPL-2.0
@@ -1049,7 +1049,7 @@ message:
 message_end:
 </code></pre>
 <p>The assembly program above can be compiled with the following command.</p>
-<pre><code class="language-bash">gcc -static -nostdlib hello.S -o hello
+<pre><code class="language-bash">gcc -static -nkstdlib hello.S -o hello
 </code></pre>
 <p>The user program above requires our kernel to support three main features:</p>
 <ol>
@@ -1059,7 +1059,7 @@ message_end:
 </ol>
 <p>A sample implementation of the kernel in safe Rust is given below.
 Comments are added
-to highlight how the APIs of Asterinas OSTD enable safe kernel development.</p>
+to highlight how the APIs of Astros KSTD enable safe kernel development.</p>
 <pre><code class="language-rust">// SPDX-License-Identifier: MPL-2.0
 
 #![no_std]
@@ -1073,21 +1073,21 @@ use core::str;
 use alloc::sync::Arc;
 use alloc::vec;
 
-use ostd::arch::qemu::{exit_qemu, QemuExitCode};
-use ostd::cpu::UserContext;
-use ostd::mm::{
+use kstd::arch::qemu::{exit_qemu, QemuExitCode};
+use kstd::cpu::UserContext;
+use kstd::mm::{
     CachePolicy, FallibleVmRead, FallibleVmWrite, FrameAllocOptions, PageFlags, PageProperty,
     Vaddr, VmIo, VmSpace, VmWriter, PAGE_SIZE,
 };
-use ostd::prelude::*;
-use ostd::task::{Task, TaskOptions};
-use ostd::user::{ReturnReason, UserMode, UserSpace};
+use kstd::prelude::*;
+use kstd::task::{Task, TaskOptions};
+use kstd::user::{ReturnReason, UserMode, UserSpace};
 
-/// The kernel's boot and initialization process is managed by OSTD.
+/// The kernel's boot and initialization process is managed by KSTD.
 /// After the process is done, the kernel's execution environment
 /// (e.g., stack, heap, tasks) will be ready for use and the entry function
-/// labeled as `#[ostd::main]` will be called.
-#[ostd::main]
+/// labeled as `#[kstd::main]` will be called.
+#[kstd::main]
 pub fn main() {
     let program_binary = include_bytes!("../hello");
     let user_space = create_user_space(program_binary);
@@ -1201,24 +1201,24 @@ fn handle_syscall(user_context: &amp;mut UserContext, user_space: &amp;UserSpace
         _ =&gt; unimplemented!(),
     }
 }</code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="osdk-user-guide"><a class="header" href="#osdk-user-guide">OSDK User Guide</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ksdk-user-guide"><a class="header" href="#ksdk-user-guide">KSDK User Guide</a></h1>
 <h2 id="overview-1"><a class="header" href="#overview-1">Overview</a></h2>
-<p>The Asterinas OSDK (short for Operating System Development Kit)
+<p>The Astros KSDK (short for Operating System Development Kit)
 is designed to simplify the development of Rust operating systems.
 It aims to streamline the process
-by leveraging <a href="osdk/guide/../../kernel/the-framekernel-architecture.html">the framekernel architecture</a>.</p>
-<p>The OSDK provides a command-line tool <code>cargo-osdk</code>,
+by leveraging <a href="ksdk/guide/../../kernel/the-framekernel-architecture.html">the framekernel architecture</a>.</p>
+<p>The KSDK provides a command-line tool <code>cargo-ksdk</code>,
 which facilitates project management
 for those developed on the framekernel architecture.
-<code>cargo-osdk</code> can be used as a subcommand of Cargo.
+<code>cargo-ksdk</code> can be used as a subcommand of Cargo.
 Much like Cargo for Rust projects,
-<code>cargo-osdk</code> enables building, running,
+<code>cargo-ksdk</code> enables building, running,
 and testing projects conveniently.</p>
-<h2 id="install-osdk"><a class="header" href="#install-osdk">Install OSDK</a></h2>
+<h2 id="install-ksdk"><a class="header" href="#install-ksdk">Install KSDK</a></h2>
 <h3 id="requirements"><a class="header" href="#requirements">Requirements</a></h3>
-<p>Currently, OSDK is only supported on x86_64 Ubuntu systems.
+<p>Currently, KSDK is only supported on x86_64 Ubuntu systems.
 We will add support for more operating systems in the future.</p>
-<p>To run a kernel developed by OSDK with QEMU,
+<p>To run a kernel developed by KSDK with QEMU,
 the following tools need to be installed:</p>
 <ul>
 <li>Rust &gt;= 1.75.0</li>
@@ -1241,26 +1241,26 @@ after Rust is installed by</p>
 <pre><code class="language-bash">cargo install cargo-binutils
 </code></pre>
 <h3 id="install"><a class="header" href="#install">Install</a></h3>
-<p><code>cargo-osdk</code> is published on <a href="https://crates.io/">crates.io</a>,
+<p><code>cargo-ksdk</code> is published on <a href="https://crates.io/">crates.io</a>,
 and can be installed by running</p>
-<pre><code class="language-bash">cargo install cargo-osdk
+<pre><code class="language-bash">cargo install cargo-ksdk
 </code></pre>
 <h3 id="upgrade"><a class="header" href="#upgrade">Upgrade</a></h3>
-<p>If <code>cargo-osdk</code> is already installed,
+<p>If <code>cargo-ksdk</code> is already installed,
 the tool can be upgraded by running</p>
-<pre><code class="language-bash">cargo install --force cargo-osdk
+<pre><code class="language-bash">cargo install --force cargo-ksdk
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="why-osdk"><a class="header" href="#why-osdk">Why OSDK</a></h1>
-<p>OSDK is designed to elevate the development experience
+<div style="break-before: page; page-break-before: always;"></div><h1 id="why-ksdk"><a class="header" href="#why-ksdk">Why KSDK</a></h1>
+<p>KSDK is designed to elevate the development experience
 for Rust OS developers to the ease and convenience
 typically associated with Rust application development.
 Imagine crafting operating systems
 with the same simplicity as applications!
-This is important to Asterinas
+This is important to Astros
 as we believe that the project's success
 is intricately tied to the productivity and happiness
 of its developers.
-So the OSDK is here to upgrade your dev experience.</p>
+So the KSDK is here to upgrade your dev experience.</p>
 <p>To be honest, writing OS kernels is hard.
 Even when you're using Rust,
 which is a total game-changer for OS devs,
@@ -1331,7 +1331,7 @@ to document "the Dark Arts of Unsafe Rust",
 unsafe Rust is still tricky to use correctly,
 even among seasoned Rust developers.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="creating-an-os-project"><a class="header" href="#creating-an-os-project">Creating an OS Project</a></h1>
-<p>The OSDK can be used to create a new kernel project
+<p>The KSDK can be used to create a new kernel project
 or a new library project.
 A kernel project defines the entry point of the kernel
 and can be run with QEMU.
@@ -1340,11 +1340,11 @@ and be imported by other OSes.</p>
 <h2 id="creating-a-new-kernel-project"><a class="header" href="#creating-a-new-kernel-project">Creating a new kernel project</a></h2>
 <p>Creating a new kernel project is simple.
 You only need to execute the following command:</p>
-<pre><code class="language-bash">cargo osdk new --kernel myos
+<pre><code class="language-bash">cargo ksdk new --kernel myos
 </code></pre>
 <h2 id="creating-a-new-library-project"><a class="header" href="#creating-a-new-library-project">Creating a new library project</a></h2>
 <p>Creating a new library project requires just one command:</p>
-<pre><code class="language-bash">cargo osdk new mylib
+<pre><code class="language-bash">cargo ksdk new mylib
 </code></pre>
 <h2 id="generated-files"><a class="header" href="#generated-files">Generated files</a></h2>
 <p>Next, we will introduce
@@ -1357,7 +1357,7 @@ for both the kernel project and library project
 contains the following contents:</p>
 <pre><code class="language-text">myos/
 ├── Cargo.toml
-├── OSDK.toml
+├── KSDK.toml
 ├── rust-toolchain.toml
 └── src/
     └── lib.rs
@@ -1365,17 +1365,17 @@ contains the following contents:</p>
 <h3 id="srclibrs"><a class="header" href="#srclibrs"><code>src/lib.rs</code></a></h3>
 <h4 id="kernel-project"><a class="header" href="#kernel-project">Kernel project</a></h4>
 <p>The <code>src/lib.rs</code> file contains the code for a simple kernel.
-The function marked with the <code>#[ostd::main]</code> macro
-is considered the kernel entry point by OSDK.
+The function marked with the <code>#[kstd::main]</code> macro
+is considered the kernel entry point by KSDK.
 The kernel
 will print <code>Hello world from the guest kernel!</code>to the console
 and then abort.</p>
 <pre><code class="language-rust">#![no_std]
 #![deny(unsafe_code)]
 
-use ostd::prelude::*;
+use kstd::prelude::*;
 
-#[ostd::main]
+#[kstd::main]
 fn kernel_main() {
     println!("Hello world from guest kernel!");
 }</code></pre>
@@ -1390,34 +1390,34 @@ and each test case is marked with <code>#[ktest]</code>.</p>
 
 #[cfg(ktest)]
 mod tests {
-    use ostd::prelude::*;
+    use kstd::prelude::*;
 
     #[ktest]
     fn it_works() {
-        let memory_regions = ostd::boot::memory_regions();
+        let memory_regions = kstd::boot::memory_regions();
         assert!(!memory_regions.is_empty());
     }
 }</code></pre>
 <h3 id="cargotoml"><a class="header" href="#cargotoml"><code>Cargo.toml</code></a></h3>
 <p>The <code>Cargo.toml</code> file is the Rust project manifest.
 In addition to the contents of a normal Rust project,
-OSDK will add the dependencies of the Asterinas OSTD to the file.
+KSDK will add the dependencies of the Astros KSTD to the file.
 The dependency version may change over time.</p>
-<pre><code class="language-toml">[dependencies.ostd]
-git = "https://github.com/asterinas/asterinas"
+<pre><code class="language-toml">[dependencies.kstd]
+git = "https://github.com/astros/astros"
 branch = "main"
 </code></pre>
-<p>OSDK will also exclude the directory
+<p>KSDK will also exclude the directory
 which is used to generate temporary files.</p>
 <pre><code class="language-toml">[workspace]
-exclude = ["target/osdk/base"]
+exclude = ["target/ksdk/base"]
 </code></pre>
-<h3 id="osdktoml"><a class="header" href="#osdktoml"><code>OSDK.toml</code></a></h3>
-<p>The <code>OSDK.toml</code> file is a manifest
-that defines the exact behavior of OSDK.
+<h3 id="ksdktoml"><a class="header" href="#ksdktoml"><code>KSDK.toml</code></a></h3>
+<p>The <code>KSDK.toml</code> file is a manifest
+that defines the exact behavior of KSDK.
 By default, it includes settings on how to start QEMU to run a kernel.
 The meaning of each key can be found
-in the <a href="osdk/guide/../reference/manifest.html">manifest documentation</a>.
+in the <a href="ksdk/guide/../reference/manifest.html">manifest documentation</a>.
 Please avoid changing the default settings
 unless you know what you are doing.</p>
 <p>The default manifest of a kernel project:</p>
@@ -1445,53 +1445,53 @@ args = """\
 </code></pre>
 <h3 id="rust-toolchaintoml"><a class="header" href="#rust-toolchaintoml"><code>rust-toolchain.toml</code></a></h3>
 <p>The Rust toolchain for the kernel.
-It is the same as the toolchain of the Asterinas OSTD.</p>
+It is the same as the toolchain of the Astros KSTD.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="running-or-testing-an-os-project"><a class="header" href="#running-or-testing-an-os-project">Running or Testing an OS Project</a></h1>
-<p>The OSDK allows for convenient building, running,
+<p>The KSDK allows for convenient building, running,
 and testing of an OS project.
 The following example shows the typical workflow.</p>
 <p>Suppose you have created a new kernel project named <code>myos</code>
 and you are in the project directory:</p>
-<pre><code class="language-bash">cargo osdk new --kernel myos &amp;&amp; cd myos
+<pre><code class="language-bash">cargo ksdk new --kernel myos &amp;&amp; cd myos
 </code></pre>
 <h2 id="build-the-project"><a class="header" href="#build-the-project">Build the project</a></h2>
 <p>To build the project and its dependencies,
 simply type:</p>
-<pre><code class="language-bash">cargo osdk build
+<pre><code class="language-bash">cargo ksdk build
 </code></pre>
-<p>The initial build of an OSDK project
+<p>The initial build of an KSDK project
 may take a considerable amount of time
 as it involves downloading the Rust toolchain used by the framekernel.
 However, this is a one-time process.</p>
 <h2 id="run-the-project"><a class="header" href="#run-the-project">Run the project</a></h2>
 <p>To launch the kernel with QEMU,
 use the following command:</p>
-<pre><code class="language-bash">cargo osdk run
+<pre><code class="language-bash">cargo ksdk run
 </code></pre>
-<p>OSDK will boot the kernel
+<p>KSDK will boot the kernel
 and initialize OS resources like the console for output,
 and then hand over control to the kernel entry point
 to execute the kernel code.</p>
 <p><strong>Note</strong>: Only kernel projects (the projects
-that defines the function marked with <code>#[ostd::main]</code>)
+that defines the function marked with <code>#[kstd::main]</code>)
 can be run;
 library projects cannot.</p>
 <h2 id="test-the-project"><a class="header" href="#test-the-project">Test the project</a></h2>
 <p>Suppose you have created a new library project named <code>mylib</code>
 which contains a default test case
 and you are in the project directory.</p>
-<pre><code class="language-bash">cargo osdk new --lib mylib &amp;&amp; cd mylib
+<pre><code class="language-bash">cargo ksdk new --lib mylib &amp;&amp; cd mylib
 </code></pre>
 <p>To run the kernel mode tests, use the following command:</p>
-<pre><code class="language-bash">cargo osdk test
+<pre><code class="language-bash">cargo ksdk test
 </code></pre>
-<p>OSDK will run all the kernel mode tests in the crate.</p>
+<p>KSDK will run all the kernel mode tests in the crate.</p>
 <p>Test cases can be added not only in library projects
 but also in kernel projects.</p>
 <p>If you want to run a specific test with a given name,
 for example, if the test is named <code>foo</code>,
 use the following command:</p>
-<pre><code class="language-bash">cargo osdk test foo
+<pre><code class="language-bash">cargo ksdk test foo
 </code></pre>
 <h2 id="options"><a class="header" href="#options">Options</a></h2>
 <p>All of the <code>build</code>, <code>run</code>, and <code>test</code> commands accept options
@@ -1500,14 +1500,14 @@ launch the kernel.
 The following documentations provide details on
 all the available options:</p>
 <ul>
-<li><a href="osdk/guide/../reference/commands/build.html"><code>build</code> options</a></li>
-<li><a href="osdk/guide/../reference/commands/run.html"><code>run</code> options</a></li>
-<li><a href="osdk/guide/../reference/commands/test.html"><code>test</code> options</a></li>
+<li><a href="ksdk/guide/../reference/commands/build.html"><code>build</code> options</a></li>
+<li><a href="ksdk/guide/../reference/commands/run.html"><code>run</code> options</a></li>
+<li><a href="ksdk/guide/../reference/commands/test.html"><code>test</code> options</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="working-in-a-workspace"><a class="header" href="#working-in-a-workspace">Working in a Workspace</a></h1>
 <p>Typically, an operating system may consist of multiple crates,
 and these crates may be organized in a workspace.
-The OSDK also supports managing projects in a workspace.
+The KSDK also supports managing projects in a workspace.
 Below is an example that demonstrates
 how to create, build, run, and test projects in a workspace.</p>
 <h2 id="creating-a-new-workspace"><a class="header" href="#creating-a-new-workspace">Creating a new workspace</a></h2>
@@ -1522,13 +1522,13 @@ resolver = "2"
 </code></pre>
 <h2 id="creating-a-kernel-project-and-a-library-project"><a class="header" href="#creating-a-kernel-project-and-a-library-project">Creating a kernel project and a library project</a></h2>
 <p>The two projects can be created using the following commands:</p>
-<pre><code class="language-bash">cargo osdk new --kernel myos
-cargo osdk new mylib
+<pre><code class="language-bash">cargo ksdk new --kernel myos
+cargo ksdk new mylib
 </code></pre>
 <p>The generated directory structure will be as follows:</p>
 <pre><code class="language-text">myworkspace/
   ├── Cargo.toml
-  ├── OSDK.toml
+  ├── KSDK.toml
   ├── rust-toolchain.toml
   ├── myos/
   │   ├── Cargo.toml
@@ -1539,10 +1539,10 @@ cargo osdk new mylib
       └── src/
           └── lib.rs
 </code></pre>
-<p>At present, the OSDK mandates that there must be only one kernel project
+<p>At present, the KSDK mandates that there must be only one kernel project
 within a workspace.</p>
 <p>In addition to the two projects,
-the OSDK will also generate <code>OSDK.toml</code> and <code>rust-toolchain.toml</code>
+the KSDK will also generate <code>KSDK.toml</code> and <code>rust-toolchain.toml</code>
 at the root of the workspace.</p>
 <p>Next, add the following function to <code>mylib/src/lib.rs</code>.
 This function will calculate the available memory
@@ -1550,7 +1550,7 @@ after booting:</p>
 <pre><code class="language-rust">// SPDX-License-Identifier: MPL-2.0
 
 pub fn available_memory() -&gt; usize {
-    let regions = ostd::boot::memory_regions();
+    let regions = kstd::boot::memory_regions();
     regions.iter().map(|region| region.len()).sum()
 }</code></pre>
 <p>Then, add a dependency on <code>mylib</code> to <code>myos/Cargo.toml</code>:</p>
@@ -1565,37 +1565,37 @@ This main function will call the function from <code>mylib</code>:</p>
 #![no_std]
 #![deny(unsafe_code)]
 
-use ostd::prelude::*;
+use kstd::prelude::*;
 
-#[ostd::main]
+#[kstd::main]
 fn kernel_main() {
     let avail_mem_as_mb = mylib::available_memory() / 1_000_000;
     println!("The available memory is {} MB", avail_mem_as_mb);
 }</code></pre>
 <h2 id="building-and-running-the-kernel"><a class="header" href="#building-and-running-the-kernel">Building and Running the kernel</a></h2>
 <p>Build and run the project using the following commands:</p>
-<pre><code class="language-bash">cargo osdk build
-cargo osdk run
+<pre><code class="language-bash">cargo ksdk build
+cargo ksdk run
 </code></pre>
 <p>If everything goes well,
 you will see the output from the guest kernel.</p>
 <h2 id="running-unit-test"><a class="header" href="#running-unit-test">Running unit test</a></h2>
 <p>You can run test cases from all crates
 by using the following command in the workspace folder:</p>
-<pre><code class="language-bash">cargo osdk test
+<pre><code class="language-bash">cargo ksdk test
 </code></pre>
 <p>If you want to run test cases from a specific crate,
 navigate to the crate's folder
-and run <code>cargo osdk test</code>.
+and run <code>cargo ksdk test</code>.
 For example, if you want to test <code>mylib</code>,
 use the following command:</p>
-<pre><code class="language-bash">cd mylib &amp;&amp; cargo osdk test
+<pre><code class="language-bash">cd mylib &amp;&amp; cargo ksdk test
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="advanced-topics"><a class="header" href="#advanced-topics">Advanced topics</a></h1>
-<p>This chapter delves into advanced topics regarding OSDK,
+<p>This chapter delves into advanced topics regarding KSDK,
 including its application in TEE environments such as Intel TDX.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="running-an-os-in-intel-tdx-env"><a class="header" href="#running-an-os-in-intel-tdx-env">Running an OS in Intel TDX env</a></h1>
-<p>The OSDK supports running your OS in an <a href="https://www.intel.com/content/www/us/en/developer/tools/trust-domain-extensions/overview.html">Intel TDX</a> environment conveniently.
+<p>The KSDK supports running your OS in an <a href="https://www.intel.com/content/www/us/en/developer/tools/trust-domain-extensions/overview.html">Intel TDX</a> environment conveniently.
 Intel TDX can provide a more secure environment for your OS.</p>
 <h2 id="prepare-the-intel-tdx-environment-1"><a class="header" href="#prepare-the-intel-tdx-environment-1">Prepare the Intel TDX Environment</a></h2>
 <p>Please make sure your server supports Intel TDX.</p>
@@ -1613,15 +1613,15 @@ it means the TDX module has loaded successfully.</p>
 and other essential software for running an OS.
 Therefore, it is recommended to use a Docker image to deploy the environment.</p>
 <p>Run a TDX Docker container:</p>
-<pre><code class="language-bash">docker run -it --privileged --network=host --device=/dev/kvm asterinas/osdk:0.9.4-tdx
+<pre><code class="language-bash">docker run -it --privileged --network=host --device=/dev/kvm astros/ksdk:0.9.4-tdx
 </code></pre>
-<h2 id="edit-osdktoml-for-intel-tdx-support"><a class="header" href="#edit-osdktoml-for-intel-tdx-support">Edit <code>OSDK.toml</code> for Intel TDX support</a></h2>
+<h2 id="edit-ksdktoml-for-intel-tdx-support"><a class="header" href="#edit-ksdktoml-for-intel-tdx-support">Edit <code>KSDK.toml</code> for Intel TDX support</a></h2>
 <p>As Intel TDX has extra requirements or restrictions for VMs,
-it demands adjusting the OSDK configurations accordingly.
-This can be easily achieved with the <code>scheme</code> feature of the OSDK,
-which provides a convenient way to override the default OSDK configurations
+it demands adjusting the KSDK configurations accordingly.
+This can be easily achieved with the <code>scheme</code> feature of the KSDK,
+which provides a convenient way to override the default KSDK configurations
 for a specific environment.</p>
-<p>For example, you can append the following TDX-specific scheme to your <code>OSDK.toml</code> file.</p>
+<p>For example, you can append the following TDX-specific scheme to your <code>KSDK.toml</code> file.</p>
 <pre><code class="language-toml">[scheme."tdx"]
 supported_archs = ["x86_64"]
 boot.method = "grub-qcow2"
@@ -1635,7 +1635,7 @@ qemu.args = """\
     -monitor pty \
     -no-hpet \
     -nodefaults \
-    -drive file=target/osdk/asterinas/asterinas.qcow2,if=virtio,format=qcow2 \
+    -drive file=target/ksdk/astros/astros.qcow2,if=virtio,format=qcow2 \
     -monitor telnet:127.0.0.1:9001,server,nowait \
     -bios /usr/share/qemu/OVMF.fd \
     -object tdx-guest,sept-ve-disable=on,id=tdx,quote-generation-service=vsock:2:4050 \
@@ -1648,27 +1648,27 @@ qemu.args = """\
 </code></pre>
 <p>To choose the configurations specified by the TDX scheme over the default ones,
 add the <code>--scheme</code> argument to the build, run, or test command.</p>
-<pre><code class="language-bash">cargo osdk build --scheme tdx
-cargo osdk run --scheme tdx
-cargo osdk test --scheme tdx
+<pre><code class="language-bash">cargo ksdk build --scheme tdx
+cargo ksdk run --scheme tdx
+cargo ksdk test --scheme tdx
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="osdk-user-reference"><a class="header" href="#osdk-user-reference">OSDK User Reference</a></h1>
-<p>The Asterinas OSDK is a command line tool that can be used
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ksdk-user-reference"><a class="header" href="#ksdk-user-reference">KSDK User Reference</a></h1>
+<p>The Astros KSDK is a command line tool that can be used
 as a subcommand of Cargo.
-The common usage of OSDK is:</p>
-<pre><code class="language-bash">cargo osdk &lt;COMMAND&gt;
+The common usage of KSDK is:</p>
+<pre><code class="language-bash">cargo ksdk &lt;COMMAND&gt;
 </code></pre>
-<p>You can use <code>cargo osdk -h</code>
+<p>You can use <code>cargo ksdk -h</code>
 to see the full list of available commands.
 For the specific usage of a subcommand,
-you can use <code>cargo osdk help &lt;COMMAND&gt;</code>.</p>
+you can use <code>cargo ksdk help &lt;COMMAND&gt;</code>.</p>
 <h2 id="manifest"><a class="header" href="#manifest">Manifest</a></h2>
-<p>The OSDK utilizes a manifest named <code>OSDK.toml</code>
+<p>The KSDK utilizes a manifest named <code>KSDK.toml</code>
 to define its precise behavior regarding
 how to run a kernel with QEMU.
-The <code>OSDK.toml</code> file should be placed
+The <code>KSDK.toml</code> file should be placed
 in the same folder as the project's <code>Cargo.toml</code>.
-The <a href="osdk/reference/manifest.html">Manifest documentation</a>
+The <a href="ksdk/reference/manifest.html">Manifest documentation</a>
 provides an introduction
 to all the available configuration options.</p>
 <p>The command line tool can also be used
@@ -1681,15 +1681,15 @@ path = "/usr/bin/qemu-system-x86_64"
 </code></pre>
 <p>But the user provides a new QEMU path
 when running the project using:</p>
-<pre><code class="language-bash">cargo osdk run --qemu.path="/usr/local/qemu-kvm"
+<pre><code class="language-bash">cargo ksdk run --qemu.path="/usr/local/qemu-kvm"
 </code></pre>
 <p>Then, the actual path of QEMU should be <code>/usr/local/qemu-kvm</code>
 since command line options have higher priority.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="commands"><a class="header" href="#commands">Commands</a></h1>
-<p>OSDK provides similar subcommands as Cargo,
+<p>KSDK provides similar subcommands as Cargo,
 and these subcommands have simalar meanings
 as corresponding Cargo subcommands.</p>
-<p>Currently, OSDK supports the following subcommands:</p>
+<p>Currently, KSDK supports the following subcommands:</p>
 <ul>
 <li><strong>new</strong>: Create a new kernel package or library package</li>
 <li><strong>build</strong>: Compile the project and its dependencies</li>
@@ -1704,13 +1704,13 @@ as corresponding Cargo subcommands.</p>
 can accept additional options,
 while the <strong>check</strong> and <strong>clippy</strong> subcommands can only accept arguments
 that are compatible with the corresponding Cargo subcommands.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="cargo-osdk-new"><a class="header" href="#cargo-osdk-new">cargo osdk new</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cargo-ksdk-new"><a class="header" href="#cargo-ksdk-new">cargo ksdk new</a></h1>
 <h2 id="overview-3"><a class="header" href="#overview-3">Overview</a></h2>
-<p>The <code>cargo osdk new</code> command
+<p>The <code>cargo ksdk new</code> command
 is used to create a kernel project
 or a new library project.
 The usage is as follows:</p>
-<pre><code class="language-bash">cargo osdk new [OPTIONS] &lt;name&gt;
+<pre><code class="language-bash">cargo ksdk new [OPTIONS] &lt;name&gt;
 </code></pre>
 <h2 id="arguments"><a class="header" href="#arguments">Arguments</a></h2>
 <p><code>&lt;name&gt;</code>: the name of the crate.</p>
@@ -1725,25 +1725,25 @@ Use the library template. This is the default option.</p>
 <ul>
 <li>Create a new kernel named <code>myos</code>:</li>
 </ul>
-<pre><code class="language-bash">cargo osdk new --kernel myos
+<pre><code class="language-bash">cargo ksdk new --kernel myos
 </code></pre>
 <ul>
 <li>Create a new library named <code>mylib</code>:</li>
 </ul>
-<pre><code class="language-bash">cargo osdk new mylib
+<pre><code class="language-bash">cargo ksdk new mylib
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="cargo-osdk-build"><a class="header" href="#cargo-osdk-build">cargo osdk build</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cargo-ksdk-build"><a class="header" href="#cargo-ksdk-build">cargo ksdk build</a></h1>
 <h2 id="overview-4"><a class="header" href="#overview-4">Overview</a></h2>
-<p>The <code>cargo osdk build</code> command is used to
+<p>The <code>cargo ksdk build</code> command is used to
 compile the project and its dependencies.
 The usage is as follows:</p>
-<pre><code class="language-bash">cargo osdk build [OPTIONS]
+<pre><code class="language-bash">cargo ksdk build [OPTIONS]
 </code></pre>
 <h2 id="options-2"><a class="header" href="#options-2">Options</a></h2>
 <p>The options can be divided into two types:
 Cargo options that can be accepted by Cargo,
 and Manifest options that can also be defined
-in the manifest named <code>OSDK.toml</code>.</p>
+in the manifest named <code>KSDK.toml</code>.</p>
 <h3 id="cargo-options"><a class="header" href="#cargo-options">Cargo options</a></h3>
 <ul>
 <li>
@@ -1769,14 +1769,14 @@ Do not activate the <code>default</code> features</p>
 Override a configuration value</p>
 </li>
 </ul>
-<p>More Cargo options will be supported in future versions of OSDK.</p>
+<p>More Cargo options will be supported in future versions of KSDK.</p>
 <h3 id="manifest-options"><a class="header" href="#manifest-options">Manifest options</a></h3>
 <p>These options can also be defined
-in the project's manifest named <code>OSDK.toml</code>.
+in the project's manifest named <code>KSDK.toml</code>.
 Command line options are used to override
-or append values in <code>OSDK.toml</code>.
+or append values in <code>KSDK.toml</code>.
 The allowed values for each option can be found
-in the <a href="osdk/reference/commands/../manifest.html">Manifest Documentation</a>.</p>
+in the <a href="ksdk/reference/commands/../manifest.html">Manifest Documentation</a>.</p>
 <ul>
 <li><code>--kcmd-args &lt;ARGS&gt;</code>:
 Command line arguments for the guest kernel</li>
@@ -1799,7 +1799,7 @@ Extra arguments for running QEMU</li>
 <li><code>--strip-elf</code>:
 Whether to strip the built kernel ELF using <code>rust-strip</code></li>
 <li><code>--scheme &lt;SCHEME&gt;</code>:
-Select the specific configuration scheme provided in the OSDK manifest</li>
+Select the specific configuration scheme provided in the KSDK manifest</li>
 <li><code>--encoding &lt;FORMAT&gt;</code>:
 Denote the encoding format for kernel self-decompression</li>
 </ul>
@@ -1808,84 +1808,84 @@ Denote the encoding format for kernel self-decompression</li>
 <li>Build a project with <code>./initramfs.cpio.gz</code>
 as the initramfs and <code>multiboot2</code> as the boot protocol used by GRUB:</li>
 </ul>
-<pre><code class="language-bash">cargo osdk build --initramfs="./initramfs.cpio.gz" --grub-boot-protocol="multiboot2"
+<pre><code class="language-bash">cargo ksdk build --initramfs="./initramfs.cpio.gz" --grub-boot-protocol="multiboot2"
 </code></pre>
 <ul>
 <li>Build a project and append <code>sh</code>, <code>-l</code>
 to init process arguments:</li>
 </ul>
-<pre><code class="language-bash">cargo osdk build --init_args="sh" --init_args="-l"
+<pre><code class="language-bash">cargo ksdk build --init_args="sh" --init_args="-l"
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="cargo-osdk-run"><a class="header" href="#cargo-osdk-run">cargo osdk run</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cargo-ksdk-run"><a class="header" href="#cargo-ksdk-run">cargo ksdk run</a></h1>
 <h2 id="overview-5"><a class="header" href="#overview-5">Overview</a></h2>
-<p><code>cargo osdk run</code> is used to run the kernel with QEMU.
+<p><code>cargo ksdk run</code> is used to run the kernel with QEMU.
 The usage is as follows:</p>
-<pre><code class="language-bash">cargo osdk run [OPTIONS]
+<pre><code class="language-bash">cargo ksdk run [OPTIONS]
 </code></pre>
 <h2 id="options-3"><a class="header" href="#options-3">Options</a></h2>
-<p>Most options are the same as those of <code>cargo osdk build</code>.
-Refer to the <a href="osdk/reference/commands/build.html">documentation</a> of <code>cargo osdk build</code>
+<p>Most options are the same as those of <code>cargo ksdk build</code>.
+Refer to the <a href="ksdk/reference/commands/build.html">documentation</a> of <code>cargo ksdk build</code>
 for more details.</p>
 <p>Additionally, when running the kernel using QEMU, we can setup the QEMU as a
 debug server using option <code>--gdb-server</code>. This option supports an additional
 comma separated configuration list:</p>
 <ul>
 <li><code>addr=ADDR</code>: the network or unix socket address on which the GDB server listens
-(default: <code>.osdk-gdb-socket</code>, a local UNIX socket);</li>
+(default: <code>.ksdk-gdb-socket</code>, a local UNIX socket);</li>
 <li><code>wait-client</code>: let the GDB server wait for the GDB client before execution;</li>
 <li><code>vscode</code>: generate a '.vscode/launch.json' for debugging with Visual Studio Code
 (Requires <a href="https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb">CodeLLDB</a>).</li>
 </ul>
-<p>See <a href="osdk/reference/commands/debug.html">Debug Command</a> to interact with the GDB server in terminal.</p>
+<p>See <a href="ksdk/reference/commands/debug.html">Debug Command</a> to interact with the GDB server in terminal.</p>
 <h2 id="examples-2"><a class="header" href="#examples-2">Examples</a></h2>
 <p>Launch a debug server via QEMU with an unix socket stub, e.g. <code>.debug</code>:</p>
-<pre><code class="language-bash">cargo osdk run --gdb-server addr=.debug
+<pre><code class="language-bash">cargo ksdk run --gdb-server addr=.debug
 
 ```bash
-cargo osdk run --gdb-server --gdb-server-addr .debug
+cargo ksdk run --gdb-server --gdb-server-addr .debug
 </code></pre>
 <p>Launch a debug server via QEMU with a TCP stub, e.g., <code>localhost:1234</code>:</p>
-<pre><code class="language-bash">cargo osdk run --gdb-server addr=:1234
+<pre><code class="language-bash">cargo ksdk run --gdb-server addr=:1234
 </code></pre>
 <p>Launch a debug server via QEMU and use VSCode to interact with:</p>
-<pre><code class="language-bash">cargo osdk run --gdb-server wait-client,vscode,addr=:1234
+<pre><code class="language-bash">cargo ksdk run --gdb-server wait-client,vscode,addr=:1234
 </code></pre>
 <p>Launch a debug server via QEMU and use VSCode to interact with:</p>
-<pre><code class="language-bash">cargo osdk run --gdb-server --gdb-vsc --gdb-server-addr :1234
+<pre><code class="language-bash">cargo ksdk run --gdb-server --gdb-vsc --gdb-server-addr :1234
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="cargo-osdk-test"><a class="header" href="#cargo-osdk-test">cargo osdk test</a></h1>
-<p><code>cargo osdk test</code> is used to
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cargo-ksdk-test"><a class="header" href="#cargo-ksdk-test">cargo ksdk test</a></h1>
+<p><code>cargo ksdk test</code> is used to
 execute kernel mode unit test by starting QEMU.
 The usage is as follows:</p>
-<pre><code class="language-bash">cargo osdk test [TESTNAME] [OPTIONS] 
+<pre><code class="language-bash">cargo ksdk test [TESTNAME] [OPTIONS] 
 </code></pre>
 <h2 id="arguments-1"><a class="header" href="#arguments-1">Arguments</a></h2>
 <p><code>TESTNAME</code>:
 Only run tests containing this string in their names</p>
 <h2 id="options-4"><a class="header" href="#options-4">Options</a></h2>
-<p>The options are the same as those of <code>cargo osdk build</code>.
-Refer to the <a href="osdk/reference/commands/build.html">documentation</a> of <code>cargo osdk build</code>
+<p>The options are the same as those of <code>cargo ksdk build</code>.
+Refer to the <a href="ksdk/reference/commands/build.html">documentation</a> of <code>cargo ksdk build</code>
 for more details.</p>
 <h2 id="examples-3"><a class="header" href="#examples-3">Examples</a></h2>
 <ul>
 <li>Execute tests that include <em>foo</em> in their names
 using QEMU with 3GB of memory</li>
 </ul>
-<pre><code class="language-bash">cargo osdk test foo --qemu-args="-m 3G"
+<pre><code class="language-bash">cargo ksdk test foo --qemu-args="-m 3G"
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="cargo-osdk-debug"><a class="header" href="#cargo-osdk-debug">cargo osdk debug</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cargo-ksdk-debug"><a class="header" href="#cargo-ksdk-debug">cargo ksdk debug</a></h1>
 <h2 id="overview-6"><a class="header" href="#overview-6">Overview</a></h2>
-<p><code>cargo osdk debug</code> is used to debug a remote target via GDB. You need to start
+<p><code>cargo ksdk debug</code> is used to debug a remote target via GDB. You need to start
 a running server to debug with. This is accomplished by the <code>run</code> subcommand
 with <code>--gdb-server</code>. Then you can use the following command to attach to the
 server and do debugging.</p>
-<pre><code class="language-bash">cargo osdk debug [OPTIONS]
+<pre><code class="language-bash">cargo ksdk debug [OPTIONS]
 </code></pre>
 <p>Note that when KVM is enabled, hardware-assisted break points (<code>hbreak</code>) are
 needed instead of the normal break points (<code>break</code>/<code>b</code>) in GDB.</p>
 <h2 id="options-5"><a class="header" href="#options-5">Options</a></h2>
 <p><code>--remote &lt;REMOTE&gt;</code>:
-Specify the address of the remote target [default: .osdk-gdb-socket].
+Specify the address of the remote target [default: .ksdk-gdb-socket].
 The address can be either a path for the UNIX domain socket
 or a TCP port on an IP address.</p>
 <h2 id="examples-4"><a class="header" href="#examples-4">Examples</a></h2>
@@ -1893,15 +1893,15 @@ or a TCP port on an IP address.</p>
 <a href="https://www.qemu.org/docs/master/system/gdb.html">QEMU GDB stub</a> or the <code>run</code>
 subcommand, use the following commands.</p>
 <p>Connect to an unix socket, e.g., <code>./debug</code>:</p>
-<pre><code class="language-bash">cargo osdk debug --remote ./debug
+<pre><code class="language-bash">cargo ksdk debug --remote ./debug
 </code></pre>
 <p>Connect to a TCP port (<code>[IP]:PORT</code>), e.g., <code>localhost:1234</code>:</p>
-<pre><code class="language-bash">cargo osdk debug --remote localhost:1234
+<pre><code class="language-bash">cargo ksdk debug --remote localhost:1234
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="manifest-1"><a class="header" href="#manifest-1">Manifest</a></h1>
 <h2 id="overview-7"><a class="header" href="#overview-7">Overview</a></h2>
-<p>The OSDK tool utilizes a manifest to define its precise behavior.
-Typically, the configuration file is named <code>OSDK.toml</code>
+<p>The KSDK tool utilizes a manifest to define its precise behavior.
+Typically, the configuration file is named <code>KSDK.toml</code>
 and is placed in the root directory of the workspace
 (the same directory as the workspace's <code>Cargo.toml</code>).
 If there is only one crate and no workspace,
@@ -1912,9 +1912,9 @@ one is of the workspace
 (in the same directory as the workspace's <code>Cargo.toml</code>)
 and one of the crate
 (in the same directory as the crate's <code>Cargo.toml</code>).
-OSDK will firstly try to find the crate-level manifest.
-If the crate-level manifest is found, OSDK uses it only.
-If the manifest is not found, OSDK will look into the
+KSDK will firstly try to find the crate-level manifest.
+If the crate-level manifest is found, KSDK uses it only.
+If the manifest is not found, KSDK will look into the
 workspace-level manifest.</p>
 <h2 id="configurations"><a class="header" href="#configurations">Configurations</a></h2>
 <p>Below, you will find a comprehensive version of
@@ -1969,14 +1969,14 @@ args = "-machine q35 -m 2G"                 # &lt;19&gt;
 <li>
 <p>The type of current crate.</p>
 <p>Optional. If not specified,
-the default value is inferred from the usage of the macro <code>#[ostd::main]</code>.
+the default value is inferred from the usage of the macro <code>#[kstd::main]</code>.
 if the macro is used, the default value is <code>kernel</code>.
 Otherwise, the default value is <code>library</code>.</p>
 <p>Possible values are <code>library</code> or <code>kernel</code>.</p>
 </li>
 <li>
 <p>The architectures that can be supported.</p>
-<p>Optional. By default OSDK supports all architectures.
+<p>Optional. By default KSDK supports all architectures.
 When building or running,
 if not specified in the CLI,
 the architecture of the host machine will be used.</p>
@@ -2067,20 +2067,20 @@ Some keys can appear multiple times
 while other keys can appear at most once.
 Certain keys, such as <code>-kernel</code> and <code>-initrd</code>,
 are not allowed to be set here
-as they may conflict with the settings of OSDK.</p>
+as they may conflict with the settings of KSDK.</p>
 <p>The field will be evaluated, so it is ok to use environment variables
 in the arguments (usually for paths or conditional arguments). You can
 even use this mechanism to read from files by using command replacement
 <code>$(cat path/to/your/custom/args/file)</code>.</p>
 </li>
 <li>
-<p>Special settings for running. Only take effect when running <code>cargo osdk run</code>.</p>
+<p>Special settings for running. Only take effect when running <code>cargo ksdk run</code>.</p>
 <p>By default, it inherits common options.</p>
 <p>Values set here are used to override common options.</p>
 </li>
 <li>
 <p>Special settings for testing.</p>
-<p>Similar to <code>20</code>, but only take effect when running <code>cargo osdk test</code>.</p>
+<p>Similar to <code>20</code>, but only take effect when running <code>cargo ksdk test</code>.</p>
 </li>
 <li>
 <p>The definition of customized schema.</p>
@@ -2090,12 +2090,12 @@ unless overridden by new options.</p>
 </li>
 </ol>
 <h3 id="example"><a class="header" href="#example">Example</a></h3>
-<p>Here is a sound, self-explanatory example which is used by OSDK
-in the Asterinas project.</p>
+<p>Here is a sound, self-explanatory example which is used by KSDK
+in the Astros project.</p>
 <p>In the script <code>./tools/qemu_args.sh</code>, the environment variables will be
 used to determine the actual set of qemu arguments.</p>
-<pre><code class="language-toml"># The OSDK manifest at the Asterinas root virtual workspace 
-# provides default OSDK settings for all packages.
+<pre><code class="language-toml"># The KSDK manifest at the Astros root virtual workspace 
+# provides default KSDK settings for all packages.
 
 # The common options for build, run and test
 [boot]
@@ -2205,7 +2205,7 @@ and will be rendered into web pages by rustdoc.</p>
 <p>It is necessary to add documentation to all public APIs,
 including crates, modules, structs, traits, functions, macros, and more.
 The use of the <code>#[warn(missing_docs)]</code> lint enforces this rule.</p>
-<p>Asterinas adheres to the API style guidelines of the Rust community.
+<p>Astros adheres to the API style guidelines of the Rust community.
 The recommended API documentation style can be found at
 <a href="https://doc.rust-lang.org/rustdoc/how-to-write-documentation.html">How to write documentation - The rustdoc book</a>.</p>
 <h2 id="lint-guidelines"><a class="header" href="#lint-guidelines">Lint Guidelines</a></h2>
@@ -2261,8 +2261,8 @@ This is a case where all of the above requirements are met,
 so adding them as dead code is perfectly acceptable.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="boterinas"><a class="header" href="#boterinas">Boterinas</a></h1>
 <h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
-<p><code>@boterinas</code> is a general-purpose bot designed for a wide variety of tasks in Asterinas. It streamlines maintenance tasks to enhance workflow efficiency.</p>
-<p>Commands are issued by writing comments that start with the text <code>@boterinas</code>. The available commands depend on which repository you are using. The main Asterinas repository contains a <code>triagebot.toml</code> file where you can see which features are enabled.</p>
+<p><code>@boterinas</code> is a general-purpose bot designed for a wide variety of tasks in Astros. It streamlines maintenance tasks to enhance workflow efficiency.</p>
+<p>Commands are issued by writing comments that start with the text <code>@boterinas</code>. The available commands depend on which repository you are using. The main Astros repository contains a <code>triagebot.toml</code> file where you can see which features are enabled.</p>
 <p>Commands for GitHub issues or pull requests should be issued by writing <code>@boterinas</code> followed by the command anywhere in the comment. Note that <code>@boterinas</code> will ignore commands in Markdown code blocks, inline code spans, or blockquotes. You can enter multiple <code>@boterinas</code> commands in a single comment.</p>
 <p>For example, you can claim an issue and add a label in the same comment.</p>
 <pre><code class="language-markdown">@boterinas claim

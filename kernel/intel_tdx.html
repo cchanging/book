@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Intel TDX - The Asterinas Book</title>
+        <title>Intel TDX - The Astros Book</title>
 
 
         <!-- Custom HTML head -->
@@ -120,7 +120,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">The Asterinas Book</h1>
+                    <h1 class="menu-title">The Astros Book</h1>
 
                     <div class="right-buttons">
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
@@ -153,15 +153,15 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="intel-tdx"><a class="header" href="#intel-tdx">Intel TDX</a></h1>
-<p>Asterinas can serve as a secure guest OS for Intel TDX-protected virtual machines (VMs).
+<p>Astros can serve as a secure guest OS for Intel TDX-protected virtual machines (VMs).
 This documentation describes
-how Asterinas can be run and tested easily on a TDX-enabled Intel server.</p>
+how Astros can be run and tested easily on a TDX-enabled Intel server.</p>
 <p>Intel TDX (Trust Domain Extensions) is a Trusted Execution Environment (TEE) technology
 that enhances VM security
 by creating isolated, hardware-enforced trust domains
 with encrypted memory, secure initialization, and attestation mechanisms.
 For more information about Intel TDX, jump to the last section.</p>
-<h2 id="why-choose-asterinas-for-intel-tdx"><a class="header" href="#why-choose-asterinas-for-intel-tdx">Why choose Asterinas for Intel TDX</a></h2>
+<h2 id="why-choose-astros-for-intel-tdx"><a class="header" href="#why-choose-astros-for-intel-tdx">Why choose Astros for Intel TDX</a></h2>
 <p>VM TEEs such as Intel TDX deserve a more secure option for its guest OS than Linux.
 Linux,
 with its inherent memory safety issues and large Trusted Computing Base (TCB),
@@ -174,11 +174,11 @@ from the host (via hypercalls, MMIO, and etc.).
 These untrusted inputs create new attack surfaces
 that can be exploited through memory safety vulnerabilities,
 known as Iago attacks.</p>
-<p>Asterinas offers greater memory safety than Linux,
+<p>Astros offers greater memory safety than Linux,
 particularly against Iago attacks.
 Thanks to its framekernel architecture,
-the memory safety of Asterinas relies solely on the Asterinas Framework,
-excluding the safe device drivers built on top of the Asterinas Framework
+the memory safety of Astros relies solely on the Astros Framework,
+excluding the safe device drivers built on top of the Astros Framework
 that may handle untrusted inputs from the host.
 For more information, see <a href="https://www.youtube.com/watch?v=3AQ5lpXujGo">our talk on OC3'24</a>.</p>
 <h2 id="prepare-the-intel-tdx-environment"><a class="header" href="#prepare-the-intel-tdx-environment">Prepare the Intel TDX Environment</a></h2>
@@ -193,31 +193,31 @@ you can type:</p>
 <pre><code class="language-bash">[   20.507296] tdx: TDX module initialized.
 </code></pre>
 <p><code>TDX module initialized</code> means TDX module is loaded successfully.</p>
-<h2 id="build-and-run-asterinas"><a class="header" href="#build-and-run-asterinas">Build and run Asterinas</a></h2>
+<h2 id="build-and-run-astros"><a class="header" href="#build-and-run-astros">Build and run Astros</a></h2>
 <ol>
 <li>Download the latest source code.</li>
 </ol>
-<pre><code class="language-bash">git clone https://github.com/asterinas/asterinas
+<pre><code class="language-bash">git clone https://github.com/astros/astros
 </code></pre>
 <ol start="2">
 <li>Run a Docker container as the development environment.</li>
 </ol>
-<pre><code class="language-bash">docker run -it --privileged --network=host --device=/dev/kvm -v $(pwd)/asterinas:/root/asterinas asterinas/asterinas:0.11.1-tdx
+<pre><code class="language-bash">docker run -it --privileged --network=host --device=/dev/kvm -v $(pwd)/astros:/root/astros astros/astros:0.11.1-tdx
 </code></pre>
 <ol start="3">
 <li>Inside the container,
-go to the project folder to build and run Asterinas.</li>
+go to the project folder to build and run Astros.</li>
 </ol>
 <pre><code class="language-bash">make run INTEL_TDX=1
 </code></pre>
 <p>If everything goes well,
-Asterinas is now up and running inside a TD.</p>
+Astros is now up and running inside a TD.</p>
 <h2 id="using-gdb-to-debug"><a class="header" href="#using-gdb-to-debug">Using GDB to Debug</a></h2>
 <p>A Trust Domain (TD) is debuggable if its <code>ATTRIBUTES.DEBUG</code> bit is 1.
 In this mode, the host VMM can use Intel TDX module functions
 to read and modify TD VCPU state and TD private memory,
 which are not accessible when the TD is non-debuggable.</p>
-<p>Start Asterinas in a GDB-enabled TD and wait for debugging connection:</p>
+<p>Start Astros in a GDB-enabled TD and wait for debugging connection:</p>
 <pre><code class="language-bash">make gdb_server INTEL_TDX=1
 </code></pre>
 <p>Behind the scene, this command adds <code>debug=on</code> configuration to the QEMU parameters

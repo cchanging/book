@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Testing or Running an OS Project - The Asterinas Book</title>
+        <title>Why KSDK - The Astros Book</title>
 
 
         <!-- Custom HTML head -->
@@ -120,7 +120,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">The Asterinas Book</h1>
+                    <h1 class="menu-title">The Astros Book</h1>
 
                     <div class="right-buttons">
                         <a href="../../print.html" title="Print this book" aria-label="Print this book">
@@ -152,74 +152,96 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="running-or-testing-an-os-project"><a class="header" href="#running-or-testing-an-os-project">Running or Testing an OS Project</a></h1>
-<p>The OSDK allows for convenient building, running,
-and testing of an OS project.
-The following example shows the typical workflow.</p>
-<p>Suppose you have created a new kernel project named <code>myos</code>
-and you are in the project directory:</p>
-<pre><code class="language-bash">cargo osdk new --kernel myos &amp;&amp; cd myos
-</code></pre>
-<h2 id="build-the-project"><a class="header" href="#build-the-project">Build the project</a></h2>
-<p>To build the project and its dependencies,
-simply type:</p>
-<pre><code class="language-bash">cargo osdk build
-</code></pre>
-<p>The initial build of an OSDK project
-may take a considerable amount of time
-as it involves downloading the Rust toolchain used by the framekernel.
-However, this is a one-time process.</p>
-<h2 id="run-the-project"><a class="header" href="#run-the-project">Run the project</a></h2>
-<p>To launch the kernel with QEMU,
-use the following command:</p>
-<pre><code class="language-bash">cargo osdk run
-</code></pre>
-<p>OSDK will boot the kernel
-and initialize OS resources like the console for output,
-and then hand over control to the kernel entry point
-to execute the kernel code.</p>
-<p><strong>Note</strong>: Only kernel projects (the projects
-that defines the function marked with <code>#[ostd::main]</code>)
-can be run;
-library projects cannot.</p>
-<h2 id="test-the-project"><a class="header" href="#test-the-project">Test the project</a></h2>
-<p>Suppose you have created a new library project named <code>mylib</code>
-which contains a default test case
-and you are in the project directory.</p>
-<pre><code class="language-bash">cargo osdk new --lib mylib &amp;&amp; cd mylib
-</code></pre>
-<p>To run the kernel mode tests, use the following command:</p>
-<pre><code class="language-bash">cargo osdk test
-</code></pre>
-<p>OSDK will run all the kernel mode tests in the crate.</p>
-<p>Test cases can be added not only in library projects
-but also in kernel projects.</p>
-<p>If you want to run a specific test with a given name,
-for example, if the test is named <code>foo</code>,
-use the following command:</p>
-<pre><code class="language-bash">cargo osdk test foo
-</code></pre>
-<h2 id="options"><a class="header" href="#options">Options</a></h2>
-<p>All of the <code>build</code>, <code>run</code>, and <code>test</code> commands accept options
-to control their behavior, such as how to compile and
-launch the kernel.
-The following documentations provide details on
-all the available options:</p>
-<ul>
-<li><a href="../reference/commands/build.html"><code>build</code> options</a></li>
-<li><a href="../reference/commands/run.html"><code>run</code> options</a></li>
-<li><a href="../reference/commands/test.html"><code>test</code> options</a></li>
-</ul>
+                        <h1 id="why-ksdk"><a class="header" href="#why-ksdk">Why KSDK</a></h1>
+<p>KSDK is designed to elevate the development experience
+for Rust OS developers to the ease and convenience
+typically associated with Rust application development.
+Imagine crafting operating systems
+with the same simplicity as applications!
+This is important to Astros
+as we believe that the project's success
+is intricately tied to the productivity and happiness
+of its developers.
+So the KSDK is here to upgrade your dev experience.</p>
+<p>To be honest, writing OS kernels is hard.
+Even when you're using Rust,
+which is a total game-changer for OS devs,
+the challenge stands tall.
+There is a bunch of reasons.</p>
+<p>First, it is hard to write a new kernel from scratch.
+Everything that has been taken for granted by
+application developers are gone:
+no stack, no heap, no threads, not even the standard I/O.
+It's just you and the no_std world of Rust.
+You have to implement these basic programming primitives
+by getting your hands dirty with the most low-level,
+error-prone, and nitty-gritty details of computer architecture.
+It's a journey of learning, doing, and
+a whole lot of finger-crossing
+to make sure everything clicks into place.
+This means a high entry bar for new OS creators.</p>
+<p>Second, it is hard to
+reuse OS-related libraries/crates across projects.
+Think about it:
+most applications share a common groundwork,
+like libc, Rust's std library, or an SDK.
+This isn't the case with kernels -
+they lack this shared starting point,
+forcing each one to craft its own set of tools
+from the ground up.
+Take device drivers, for example.
+They often need DMA-capable buffers for chatting with hardware,
+but since every kernel has its own DMA API flavor,
+a driver for one kernel is pretty much a no-go for another.
+This means that for each new kernel out there,
+developers find themselves having to 'reinvent the wheel'
+for many core components that are standard in other kernels.</p>
+<p>Third, it is hard to do unit tests for OS functionalities.
+Unit testing plays a crucial role in ensuring code quality,
+but when you're dealing with a monolithic kernel like Linux,
+it's like a spaghetti bowl of intertwined parts.
+Trying to isolate one part for testing?
+Forget about it.
+You'd have to boot the whole kernel just to test a slice of it.
+Loadable kernel modules are no exception:
+you can't test them without plugging them into a live kernel.
+This monolithic approach to unit testing is slow and unproductive
+as it performs the job of unit tests
+at a price of integration tests.
+Regardless of the kernel architecture,
+Rust's built-in unit testing facility
+is not suited for kernel development,
+leaving each kernel to hack together their own testing frameworks.</p>
+<p>Last, it is hard to avoid writing unsafe Rust in a Rust kernel.
+Rust brings safety...
+well, at least for Rust applications,
+where you can pretty much stay
+in the wonderland of safe Rust all the way through.
+But for a Rust kernel,
+one cannot help but use unsafe Rust.
+This is because, among other reasons,
+low-level operations (e.g., managing page tables,
+doing context switching, handling interrupts,
+and interacting with devices) have to be expressed
+with unsafe Rust features (like executing assembly code
+or dereferencing raw pointers).
+The misuse of unsafe Rust could lead to
+various safety and security issues,
+as reported by <a href="https://rustsec.org">RustSec Advisory Database</a>.
+Despite having <a href="https://doc.rust-lang.org/nomicon/">a whole book</a>
+to document "the Dark Arts of Unsafe Rust",
+unsafe Rust is still tricky to use correctly,
+even among seasoned Rust developers.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../osdk/guide/create-project.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../ksdk/guide/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../../osdk/guide/work-in-workspace.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../ksdk/guide/create-project.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -229,11 +251,11 @@ all the available options:</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../osdk/guide/create-project.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../ksdk/guide/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../../osdk/guide/work-in-workspace.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../ksdk/guide/create-project.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

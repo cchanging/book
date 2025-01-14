@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>cargo osdk new - The Asterinas Book</title>
+        <title>cargo ksdk test - The Astros Book</title>
 
 
         <!-- Custom HTML head -->
@@ -120,7 +120,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">The Asterinas Book</h1>
+                    <h1 class="menu-title">The Astros Book</h1>
 
                     <div class="right-buttons">
                         <a href="../../../print.html" title="Print this book" aria-label="Print this book">
@@ -152,44 +152,36 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="cargo-osdk-new"><a class="header" href="#cargo-osdk-new">cargo osdk new</a></h1>
-<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
-<p>The <code>cargo osdk new</code> command
-is used to create a kernel project
-or a new library project.
+                        <h1 id="cargo-ksdk-test"><a class="header" href="#cargo-ksdk-test">cargo ksdk test</a></h1>
+<p><code>cargo ksdk test</code> is used to
+execute kernel mode unit test by starting QEMU.
 The usage is as follows:</p>
-<pre><code class="language-bash">cargo osdk new [OPTIONS] &lt;name&gt;
+<pre><code class="language-bash">cargo ksdk test [TESTNAME] [OPTIONS] 
 </code></pre>
 <h2 id="arguments"><a class="header" href="#arguments">Arguments</a></h2>
-<p><code>&lt;name&gt;</code>: the name of the crate.</p>
+<p><code>TESTNAME</code>:
+Only run tests containing this string in their names</p>
 <h2 id="options"><a class="header" href="#options">Options</a></h2>
-<p><code>--kernel</code>:
-Use the kernel template.
-If this option is not set,
-the library template will be used by default.</p>
-<p><code>--library</code>:
-Use the library template. This is the default option.</p>
+<p>The options are the same as those of <code>cargo ksdk build</code>.
+Refer to the <a href="build.html">documentation</a> of <code>cargo ksdk build</code>
+for more details.</p>
 <h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
 <ul>
-<li>Create a new kernel named <code>myos</code>:</li>
+<li>Execute tests that include <em>foo</em> in their names
+using QEMU with 3GB of memory</li>
 </ul>
-<pre><code class="language-bash">cargo osdk new --kernel myos
-</code></pre>
-<ul>
-<li>Create a new library named <code>mylib</code>:</li>
-</ul>
-<pre><code class="language-bash">cargo osdk new mylib
+<pre><code class="language-bash">cargo ksdk test foo --qemu-args="-m 3G"
 </code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../../osdk/reference/commands/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../../ksdk/reference/commands/run.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../../../osdk/reference/commands/build.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../../ksdk/reference/commands/debug.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -199,11 +191,11 @@ Use the library template. This is the default option.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../../osdk/reference/commands/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../../ksdk/reference/commands/run.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../../../osdk/reference/commands/build.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../../ksdk/reference/commands/debug.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

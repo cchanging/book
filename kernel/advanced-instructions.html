@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Advanced Build and Test Instructions - The Asterinas Book</title>
+        <title>Advanced Build and Test Instructions - The Astros Book</title>
 
 
         <!-- Custom HTML head -->
@@ -120,7 +120,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">The Asterinas Book</h1>
+                    <h1 class="menu-title">The Astros Book</h1>
 
                     <div class="right-buttons">
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
@@ -154,7 +154,7 @@
                     <main>
                         <h1 id="advanced-build-and-test-instructions"><a class="header" href="#advanced-build-and-test-instructions">Advanced Build and Test Instructions</a></h1>
 <h2 id="user-mode-unit-tests"><a class="header" href="#user-mode-unit-tests">User-Mode Unit Tests</a></h2>
-<p>Asterinas consists of many crates,
+<p>Astros consists of many crates,
 some of which do not require a VM environment
 and can be tested with the standard <code>cargo test</code>.
 They are listed in the root <code>Makefile</code>
@@ -163,24 +163,24 @@ and can be tested together through the following Make command.</p>
 </code></pre>
 <p>To test an individual crate, enter the directory of the crate and invoke <code>cargo test</code>.</p>
 <h3 id="kernel-mode-unit-tests"><a class="header" href="#kernel-mode-unit-tests">Kernel-Mode Unit Tests</a></h3>
-<p>Many crates in Asterinas do require a VM environment to be tested.
-The unit tests for these crates are empowered by OSDK.</p>
+<p>Many crates in Astros do require a VM environment to be tested.
+The unit tests for these crates are empowered by KSDK.</p>
 <pre><code class="language-bash">make ktest
 </code></pre>
-<p>To test an individual crate in kernel mode, enter the directory of the crate and invoke <code>cargo osdk test</code>.</p>
-<pre><code class="language-bash">cd asterinas/ostd
-cargo osdk test
+<p>To test an individual crate in kernel mode, enter the directory of the crate and invoke <code>cargo ksdk test</code>.</p>
+<pre><code class="language-bash">cd astros/kstd
+cargo ksdk test
 </code></pre>
 <h2 id="integration-test"><a class="header" href="#integration-test">Integration Test</a></h2>
 <h3 id="general-test"><a class="header" href="#general-test">General Test</a></h3>
-<p>The following command builds and runs the test binaries in <code>test/apps</code> directory on Asterinas.</p>
+<p>The following command builds and runs the test binaries in <code>test/apps</code> directory on Astros.</p>
 <pre><code class="language-bash">make run AUTO_TEST=test
 </code></pre>
 <h3 id="syscall-test"><a class="header" href="#syscall-test">Syscall Test</a></h3>
-<p>The following command builds and runs the syscall test binaries on Asterinas.</p>
+<p>The following command builds and runs the syscall test binaries on Astros.</p>
 <pre><code class="language-bash">make run AUTO_TEST=syscall
 </code></pre>
-<p>To run system call tests interactively, start an instance of Asterinas with the system call tests built and installed.</p>
+<p>To run system call tests interactively, start an instance of Astros with the system call tests built and installed.</p>
 <pre><code class="language-bash">make run BUILD_SYSCALL_TEST=1
 </code></pre>
 <p>Then, in the interactive shell, run the following script to start the syscall tests.</p>
@@ -188,15 +188,15 @@ cargo osdk test
 </code></pre>
 <h2 id="debug"><a class="header" href="#debug">Debug</a></h2>
 <h3 id="using-gdb-to-debug"><a class="header" href="#using-gdb-to-debug">Using GDB to Debug</a></h3>
-<p>To debug Asterinas via <a href="https://qemu-project.gitlab.io/qemu/system/gdb.html">QEMU GDB support</a>,
-you can compile Asterinas in the debug profile,
-start an Asterinas instance and run the GDB interactive shell in another terminal.</p>
-<p>Start a GDB-enabled VM of Asterinas with OSDK and wait for debugging connection:</p>
+<p>To debug Astros via <a href="https://qemu-project.gitlab.io/qemu/system/gdb.html">QEMU GDB support</a>,
+you can compile Astros in the debug profile,
+start an Astros instance and run the GDB interactive shell in another terminal.</p>
+<p>Start a GDB-enabled VM of Astros with KSDK and wait for debugging connection:</p>
 <pre><code class="language-bash">make gdb_server
 </code></pre>
 <p>The server will listen at the default address specified in <code>Makefile</code>, i.e., a local TCP port <code>:1234</code>.
 Change the address in <code>Makefile</code> for your convenience,
-and check <code>cargo osdk run -h</code> for more details about the address.</p>
+and check <code>cargo ksdk run -h</code> for more details about the address.</p>
 <p>Two options are provided to interact with the debug server.</p>
 <ul>
 <li>
@@ -206,7 +206,7 @@ and check <code>cargo osdk run -h</code> for more details about the address.</p>
 </li>
 <li>
 <p>VS Code: <a href="https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb">CodeLLDB</a> extension is required.
-After starting a debug server with OSDK from the shell with <code>make gdb_server</code>,
+After starting a debug server with KSDK from the shell with <code>make gdb_server</code>,
 a temporary <code>launch.json</code> is generated under <code>.vscode</code>.
 Your previous launch configs will be restored after the server is down.
 Press <code>F5</code>(Run and Debug) to start a debug session via VS Code.

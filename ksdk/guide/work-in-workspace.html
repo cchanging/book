@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>OSDK User Reference - The Asterinas Book</title>
+        <title>Working in a Workspace - The Astros Book</title>
 
 
         <!-- Custom HTML head -->
@@ -120,7 +120,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">The Asterinas Book</h1>
+                    <h1 class="menu-title">The Astros Book</h1>
 
                     <div class="right-buttons">
                         <a href="../../print.html" title="Print this book" aria-label="Print this book">
@@ -152,49 +152,103 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="osdk-user-reference"><a class="header" href="#osdk-user-reference">OSDK User Reference</a></h1>
-<p>The Asterinas OSDK is a command line tool that can be used
-as a subcommand of Cargo.
-The common usage of OSDK is:</p>
-<pre><code class="language-bash">cargo osdk &lt;COMMAND&gt;
+                        <h1 id="working-in-a-workspace"><a class="header" href="#working-in-a-workspace">Working in a Workspace</a></h1>
+<p>Typically, an operating system may consist of multiple crates,
+and these crates may be organized in a workspace.
+The KSDK also supports managing projects in a workspace.
+Below is an example that demonstrates
+how to create, build, run, and test projects in a workspace.</p>
+<h2 id="creating-a-new-workspace"><a class="header" href="#creating-a-new-workspace">Creating a new workspace</a></h2>
+<p>Create a new workspace by executing the following commands:</p>
+<pre><code class="language-bash">mkdir myworkspace &amp;&amp; cd myworkspace
+touch Cargo.toml
 </code></pre>
-<p>You can use <code>cargo osdk -h</code>
-to see the full list of available commands.
-For the specific usage of a subcommand,
-you can use <code>cargo osdk help &lt;COMMAND&gt;</code>.</p>
-<h2 id="manifest"><a class="header" href="#manifest">Manifest</a></h2>
-<p>The OSDK utilizes a manifest named <code>OSDK.toml</code>
-to define its precise behavior regarding
-how to run a kernel with QEMU.
-The <code>OSDK.toml</code> file should be placed
-in the same folder as the project's <code>Cargo.toml</code>.
-The <a href="manifest.html">Manifest documentation</a>
-provides an introduction
-to all the available configuration options.</p>
-<p>The command line tool can also be used
-to set the options in the manifest.
-If both occur, the command line options
-will always take priority over the options in the manifest.
-For example, if the manifest defines the path of QEMU as:</p>
-<pre><code class="language-toml">[qemu]
-path = "/usr/bin/qemu-system-x86_64"
+<p>Then, add the following content to <code>Cargo.toml</code>:</p>
+<pre><code class="language-toml">[workspace]
+members = []
+resolver = "2"
 </code></pre>
-<p>But the user provides a new QEMU path
-when running the project using:</p>
-<pre><code class="language-bash">cargo osdk run --qemu.path="/usr/local/qemu-kvm"
+<h2 id="creating-a-kernel-project-and-a-library-project"><a class="header" href="#creating-a-kernel-project-and-a-library-project">Creating a kernel project and a library project</a></h2>
+<p>The two projects can be created using the following commands:</p>
+<pre><code class="language-bash">cargo ksdk new --kernel myos
+cargo ksdk new mylib
 </code></pre>
-<p>Then, the actual path of QEMU should be <code>/usr/local/qemu-kvm</code>
-since command line options have higher priority.</p>
+<p>The generated directory structure will be as follows:</p>
+<pre><code class="language-text">myworkspace/
+  ├── Cargo.toml
+  ├── KSDK.toml
+  ├── rust-toolchain.toml
+  ├── myos/
+  │   ├── Cargo.toml
+  │   └── src/
+  │       └── lib.rs
+  └── mylib/
+      ├── Cargo.toml
+      └── src/
+          └── lib.rs
+</code></pre>
+<p>At present, the KSDK mandates that there must be only one kernel project
+within a workspace.</p>
+<p>In addition to the two projects,
+the KSDK will also generate <code>KSDK.toml</code> and <code>rust-toolchain.toml</code>
+at the root of the workspace.</p>
+<p>Next, add the following function to <code>mylib/src/lib.rs</code>.
+This function will calculate the available memory
+after booting:</p>
+<pre><code class="language-rust">// SPDX-License-Identifier: MPL-2.0
+
+pub fn available_memory() -&gt; usize {
+    let regions = kstd::boot::memory_regions();
+    regions.iter().map(|region| region.len()).sum()
+}</code></pre>
+<p>Then, add a dependency on <code>mylib</code> to <code>myos/Cargo.toml</code>:</p>
+<pre><code class="language-toml">[dependencies]
+mylib = { path = "../mylib" }
+</code></pre>
+<p>In <code>myos/src/lib.rs</code>,
+modify the file content as follows.
+This main function will call the function from <code>mylib</code>:</p>
+<pre><code class="language-rust">// SPDX-License-Identifier: MPL-2.0
+
+#![no_std]
+#![deny(unsafe_code)]
+
+use kstd::prelude::*;
+
+#[kstd::main]
+fn kernel_main() {
+    let avail_mem_as_mb = mylib::available_memory() / 1_000_000;
+    println!("The available memory is {} MB", avail_mem_as_mb);
+}</code></pre>
+<h2 id="building-and-running-the-kernel"><a class="header" href="#building-and-running-the-kernel">Building and Running the kernel</a></h2>
+<p>Build and run the project using the following commands:</p>
+<pre><code class="language-bash">cargo ksdk build
+cargo ksdk run
+</code></pre>
+<p>If everything goes well,
+you will see the output from the guest kernel.</p>
+<h2 id="running-unit-test"><a class="header" href="#running-unit-test">Running unit test</a></h2>
+<p>You can run test cases from all crates
+by using the following command in the workspace folder:</p>
+<pre><code class="language-bash">cargo ksdk test
+</code></pre>
+<p>If you want to run test cases from a specific crate,
+navigate to the crate's folder
+and run <code>cargo ksdk test</code>.
+For example, if you want to test <code>mylib</code>,
+use the following command:</p>
+<pre><code class="language-bash">cd mylib &amp;&amp; cargo ksdk test
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../osdk/guide/intel-tdx.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../ksdk/guide/run-project.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../../osdk/reference/commands/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../ksdk/guide/advanced_topics.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -204,11 +258,11 @@ since command line options have higher priority.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../osdk/guide/intel-tdx.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../ksdk/guide/run-project.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../../osdk/reference/commands/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../ksdk/guide/advanced_topics.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

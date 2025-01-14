@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Roadmap - The Asterinas Book</title>
+        <title>Roadmap - The Astros Book</title>
 
 
         <!-- Custom HTML head -->
@@ -120,7 +120,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">The Asterinas Book</h1>
+                    <h1 class="menu-title">The Astros Book</h1>
 
                     <div class="right-buttons">
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
@@ -153,7 +153,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="roadmap"><a class="header" href="#roadmap">Roadmap</a></h1>
-<p>Asterinas is a general-purpose OS kernel
+<p>Astros is a general-purpose OS kernel
 designed to support multiple CPU architectures and a variety of use cases.
 Currently, it only supports x86-64 VMs.
 Our roadmap includes the following plans:</p>
@@ -164,7 +164,7 @@ Our roadmap includes the following plans:</p>
 <h2 id="target-early-use-cases"><a class="header" href="#target-early-use-cases">Target Early Use Cases</a></h2>
 <p>One of the biggest challenges for a new OS kernel is driver support.
 Linux has been widely accepted due to its wide range of hardware support.
-As a newcomer, Asterinas faces the challenge of implementing drivers
+As a newcomer, Astros faces the challenge of implementing drivers
 for all devices on a target platform,
 which would take a significant amount of time.</p>
 <p>To address this obstacle,
@@ -173,14 +173,14 @@ In an IaaS (Infrastructure-as-a-Service) cloud, workloads of different tenants a
 or <a href="https://dl.acm.org/doi/10.1145/3373376.3378507">VM-style bare-metal servers</a>
 for maximum isolation and elasticity.
 The main device driver requirement for the VM environment is virtio,
-which is already supported by Asterinas.
-Therefore, using Asterinas as the guest OS of a VM
+which is already supported by Astros.
+Therefore, using Astros as the guest OS of a VM
 or the host OS of a VM-style bare-metal server in production
 looks quite feasible in the near future.</p>
-<p>Asterinas provides high assurance of memory safety
+<p>Astros provides high assurance of memory safety
 thanks to <a href="the-framekernel-architecture.html">the framekernel architecture</a>.
 Thus, in the cloud setting,
-Asterinas is attractive for usage scenarios
+Astros is attractive for usage scenarios
 where Linux ABI is necessary but Linux itself is considered insecure
 due to its large Trusted Computing Base (TCB) and memory unsafety.
 Specifically, we are focusing on two use cases:</p>
@@ -191,7 +191,7 @@ All major CPU architectures have introduced
 VM-based Trusted Execution Environment (TEE) technology,
 such as ARM CCA, AMD SEV, and Intel TDX.
 Applications running inside TEEs often handle private or sensitive data.
-By running on a lightweight and memory-safe OS kernel like Asterinas,
+By running on a lightweight and memory-safe OS kernel like Astros,
 they can greatly enhance security and privacy.</p>
 </li>
 <li>
@@ -201,7 +201,7 @@ The popular container runtimes like runc and Docker rely on
 the OS-level isolation enforced by Linux.
 However, <a href="https://dl.acm.org/doi/10.1145/3274694.3274720">Linux containers are prone to privilege escalation bugs</a>.
 With its safety and security prioritized architecture,
-Asterinas can offer more reliable OS-level isolation,
+Astros can offer more reliable OS-level isolation,
 making it ideal for secure containers.</p>
 </li>
 </ol>
@@ -214,7 +214,7 @@ making it ideal for secure containers.</p>
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../ostd/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../kstd/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -228,7 +228,7 @@ making it ideal for secure containers.</p>
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../ostd/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../kstd/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

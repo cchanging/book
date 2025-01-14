@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Working in a Workspace - The Asterinas Book</title>
+        <title>Creating an OS Project - The Astros Book</title>
 
 
         <!-- Custom HTML head -->
@@ -120,7 +120,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">The Asterinas Book</h1>
+                    <h1 class="menu-title">The Astros Book</h1>
 
                     <div class="right-buttons">
                         <a href="../../print.html" title="Print this book" aria-label="Print this book">
@@ -152,103 +152,132 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="working-in-a-workspace"><a class="header" href="#working-in-a-workspace">Working in a Workspace</a></h1>
-<p>Typically, an operating system may consist of multiple crates,
-and these crates may be organized in a workspace.
-The OSDK also supports managing projects in a workspace.
-Below is an example that demonstrates
-how to create, build, run, and test projects in a workspace.</p>
-<h2 id="creating-a-new-workspace"><a class="header" href="#creating-a-new-workspace">Creating a new workspace</a></h2>
-<p>Create a new workspace by executing the following commands:</p>
-<pre><code class="language-bash">mkdir myworkspace &amp;&amp; cd myworkspace
-touch Cargo.toml
+                        <h1 id="creating-an-os-project"><a class="header" href="#creating-an-os-project">Creating an OS Project</a></h1>
+<p>The KSDK can be used to create a new kernel project
+or a new library project.
+A kernel project defines the entry point of the kernel
+and can be run with QEMU.
+A library project can provide certain OS functionalities
+and be imported by other OSes.</p>
+<h2 id="creating-a-new-kernel-project"><a class="header" href="#creating-a-new-kernel-project">Creating a new kernel project</a></h2>
+<p>Creating a new kernel project is simple.
+You only need to execute the following command:</p>
+<pre><code class="language-bash">cargo ksdk new --kernel myos
 </code></pre>
-<p>Then, add the following content to <code>Cargo.toml</code>:</p>
-<pre><code class="language-toml">[workspace]
-members = []
-resolver = "2"
+<h2 id="creating-a-new-library-project"><a class="header" href="#creating-a-new-library-project">Creating a new library project</a></h2>
+<p>Creating a new library project requires just one command:</p>
+<pre><code class="language-bash">cargo ksdk new mylib
 </code></pre>
-<h2 id="creating-a-kernel-project-and-a-library-project"><a class="header" href="#creating-a-kernel-project-and-a-library-project">Creating a kernel project and a library project</a></h2>
-<p>The two projects can be created using the following commands:</p>
-<pre><code class="language-bash">cargo osdk new --kernel myos
-cargo osdk new mylib
+<h2 id="generated-files"><a class="header" href="#generated-files">Generated files</a></h2>
+<p>Next, we will introduce
+the contents of the generated project in detail.
+If you don't wish to delve into the details,
+you can skip the following sections.</p>
+<h3 id="overview"><a class="header" href="#overview">Overview</a></h3>
+<p>The generated directory
+for both the kernel project and library project
+contains the following contents:</p>
+<pre><code class="language-text">myos/
+├── Cargo.toml
+├── KSDK.toml
+├── rust-toolchain.toml
+└── src/
+    └── lib.rs
 </code></pre>
-<p>The generated directory structure will be as follows:</p>
-<pre><code class="language-text">myworkspace/
-  ├── Cargo.toml
-  ├── OSDK.toml
-  ├── rust-toolchain.toml
-  ├── myos/
-  │   ├── Cargo.toml
-  │   └── src/
-  │       └── lib.rs
-  └── mylib/
-      ├── Cargo.toml
-      └── src/
-          └── lib.rs
-</code></pre>
-<p>At present, the OSDK mandates that there must be only one kernel project
-within a workspace.</p>
-<p>In addition to the two projects,
-the OSDK will also generate <code>OSDK.toml</code> and <code>rust-toolchain.toml</code>
-at the root of the workspace.</p>
-<p>Next, add the following function to <code>mylib/src/lib.rs</code>.
-This function will calculate the available memory
-after booting:</p>
-<pre><code class="language-rust">// SPDX-License-Identifier: MPL-2.0
-
-pub fn available_memory() -&gt; usize {
-    let regions = ostd::boot::memory_regions();
-    regions.iter().map(|region| region.len()).sum()
-}</code></pre>
-<p>Then, add a dependency on <code>mylib</code> to <code>myos/Cargo.toml</code>:</p>
-<pre><code class="language-toml">[dependencies]
-mylib = { path = "../mylib" }
-</code></pre>
-<p>In <code>myos/src/lib.rs</code>,
-modify the file content as follows.
-This main function will call the function from <code>mylib</code>:</p>
-<pre><code class="language-rust">// SPDX-License-Identifier: MPL-2.0
-
-#![no_std]
+<h3 id="srclibrs"><a class="header" href="#srclibrs"><code>src/lib.rs</code></a></h3>
+<h4 id="kernel-project"><a class="header" href="#kernel-project">Kernel project</a></h4>
+<p>The <code>src/lib.rs</code> file contains the code for a simple kernel.
+The function marked with the <code>#[kstd::main]</code> macro
+is considered the kernel entry point by KSDK.
+The kernel
+will print <code>Hello world from the guest kernel!</code>to the console
+and then abort.</p>
+<pre><code class="language-rust">#![no_std]
 #![deny(unsafe_code)]
 
-use ostd::prelude::*;
+use kstd::prelude::*;
 
-#[ostd::main]
+#[kstd::main]
 fn kernel_main() {
-    let avail_mem_as_mb = mylib::available_memory() / 1_000_000;
-    println!("The available memory is {} MB", avail_mem_as_mb);
+    println!("Hello world from guest kernel!");
 }</code></pre>
-<h2 id="building-and-running-the-kernel"><a class="header" href="#building-and-running-the-kernel">Building and Running the kernel</a></h2>
-<p>Build and run the project using the following commands:</p>
-<pre><code class="language-bash">cargo osdk build
-cargo osdk run
+<h4 id="library-project"><a class="header" href="#library-project">Library project</a></h4>
+<p>The <code>src/lib.rs</code> of library project only contains
+a simple kernel mode unit test.
+It follows a similar code pattern as user mode unit tests.
+The test module is marked with the <code>#[cfg(ktest)]</code> macro,
+and each test case is marked with <code>#[ktest]</code>.</p>
+<pre><code class="language-rust">#![no_std]
+#![deny(unsafe_code)]
+
+#[cfg(ktest)]
+mod tests {
+    use kstd::prelude::*;
+
+    #[ktest]
+    fn it_works() {
+        let memory_regions = kstd::boot::memory_regions();
+        assert!(!memory_regions.is_empty());
+    }
+}</code></pre>
+<h3 id="cargotoml"><a class="header" href="#cargotoml"><code>Cargo.toml</code></a></h3>
+<p>The <code>Cargo.toml</code> file is the Rust project manifest.
+In addition to the contents of a normal Rust project,
+KSDK will add the dependencies of the Astros KSTD to the file.
+The dependency version may change over time.</p>
+<pre><code class="language-toml">[dependencies.kstd]
+git = "https://github.com/astros/astros"
+branch = "main"
 </code></pre>
-<p>If everything goes well,
-you will see the output from the guest kernel.</p>
-<h2 id="running-unit-test"><a class="header" href="#running-unit-test">Running unit test</a></h2>
-<p>You can run test cases from all crates
-by using the following command in the workspace folder:</p>
-<pre><code class="language-bash">cargo osdk test
+<p>KSDK will also exclude the directory
+which is used to generate temporary files.</p>
+<pre><code class="language-toml">[workspace]
+exclude = ["target/ksdk/base"]
 </code></pre>
-<p>If you want to run test cases from a specific crate,
-navigate to the crate's folder
-and run <code>cargo osdk test</code>.
-For example, if you want to test <code>mylib</code>,
-use the following command:</p>
-<pre><code class="language-bash">cd mylib &amp;&amp; cargo osdk test
+<h3 id="ksdktoml"><a class="header" href="#ksdktoml"><code>KSDK.toml</code></a></h3>
+<p>The <code>KSDK.toml</code> file is a manifest
+that defines the exact behavior of KSDK.
+By default, it includes settings on how to start QEMU to run a kernel.
+The meaning of each key can be found
+in the <a href="../reference/manifest.html">manifest documentation</a>.
+Please avoid changing the default settings
+unless you know what you are doing.</p>
+<p>The default manifest of a kernel project:</p>
+<pre><code class="language-toml">project_type = "kernel"
+
+[boot]
+method = "grub-rescue-iso"
+
+[qemu]
+args = """\
+    -machine q35,kernel-irqchip=split \
+    -cpu Icelake-Server,+x2apic \
+    --no-reboot \
+    -m 8G \
+    -smp 1 \
+    -nographic \
+    -serial chardev:mux \
+    -monitor chardev:mux \
+    -chardev stdio,id=mux,mux=on,signal=off \
+    -display none \
+    -device isa-debug-exit,iobase=0xf4,iosize=0x04 \
+    -drive if=pflash,format=raw,unit=0,readonly=on,file=/usr/share/OVMF/OVMF_CODE.fd \
+    -drive if=pflash,format=raw,unit=1,file=/usr/share/OVMF/OVMF_VARS.fd \
+"""
 </code></pre>
+<h3 id="rust-toolchaintoml"><a class="header" href="#rust-toolchaintoml"><code>rust-toolchain.toml</code></a></h3>
+<p>The Rust toolchain for the kernel.
+It is the same as the toolchain of the Astros KSTD.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../osdk/guide/run-project.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../ksdk/guide/why.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../../osdk/guide/advanced_topics.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../ksdk/guide/run-project.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -258,11 +287,11 @@ use the following command:</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../osdk/guide/run-project.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../ksdk/guide/why.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../../osdk/guide/advanced_topics.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../ksdk/guide/run-project.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

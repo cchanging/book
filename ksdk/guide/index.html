@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Intel TDX - The Asterinas Book</title>
+        <title>KSDK User Guide - The Astros Book</title>
 
 
         <!-- Custom HTML head -->
@@ -120,7 +120,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">The Asterinas Book</h1>
+                    <h1 class="menu-title">The Astros Book</h1>
 
                     <div class="right-buttons">
                         <a href="../../print.html" title="Print this book" aria-label="Print this book">
@@ -152,74 +152,65 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="running-an-os-in-intel-tdx-env"><a class="header" href="#running-an-os-in-intel-tdx-env">Running an OS in Intel TDX env</a></h1>
-<p>The OSDK supports running your OS in an <a href="https://www.intel.com/content/www/us/en/developer/tools/trust-domain-extensions/overview.html">Intel TDX</a> environment conveniently.
-Intel TDX can provide a more secure environment for your OS.</p>
-<h2 id="prepare-the-intel-tdx-environment"><a class="header" href="#prepare-the-intel-tdx-environment">Prepare the Intel TDX Environment</a></h2>
-<p>Please make sure your server supports Intel TDX.</p>
-<p>See <a href="https://github.com/canonical/tdx/tree/noble-24.04?tab=readme-ov-file#4-setup-host-os">this guide</a>
-or other materials to enable Intel TDX in host OS.</p>
-<p>To verify the TDX host status, you can type:</p>
-<pre><code class="language-bash">dmesg | grep "TDX module initialized"
+                        <h1 id="ksdk-user-guide"><a class="header" href="#ksdk-user-guide">KSDK User Guide</a></h1>
+<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
+<p>The Astros KSDK (short for Operating System Development Kit)
+is designed to simplify the development of Rust operating systems.
+It aims to streamline the process
+by leveraging <a href="../../kernel/the-framekernel-architecture.html">the framekernel architecture</a>.</p>
+<p>The KSDK provides a command-line tool <code>cargo-ksdk</code>,
+which facilitates project management
+for those developed on the framekernel architecture.
+<code>cargo-ksdk</code> can be used as a subcommand of Cargo.
+Much like Cargo for Rust projects,
+<code>cargo-ksdk</code> enables building, running,
+and testing projects conveniently.</p>
+<h2 id="install-ksdk"><a class="header" href="#install-ksdk">Install KSDK</a></h2>
+<h3 id="requirements"><a class="header" href="#requirements">Requirements</a></h3>
+<p>Currently, KSDK is only supported on x86_64 Ubuntu systems.
+We will add support for more operating systems in the future.</p>
+<p>To run a kernel developed by KSDK with QEMU,
+the following tools need to be installed:</p>
+<ul>
+<li>Rust &gt;= 1.75.0</li>
+<li>cargo-binutils</li>
+<li>gcc</li>
+<li>gdb</li>
+<li>grub</li>
+<li>ovmf</li>
+<li>qemu-system-x86_64</li>
+<li>xorriso</li>
+</ul>
+<p>The dependencies required for installing Rust and running QEMU can be installed by:</p>
+<pre><code class="language-bash">apt install build-essential curl gdb grub-efi-amd64 grub2-common \
+    libpixman-1-dev mtools ovmf qemu-system-x86 xorriso
 </code></pre>
-<p>The following result is an example:</p>
-<pre><code class="language-bash">[   20.507296] tdx: TDX module initialized.
+<p>About how to install Rust, you can refer to
+the <a href="https://www.rust-lang.org/tools/install">official site</a>.</p>
+<p><code>cargo-binutils</code> can be installed
+after Rust is installed by</p>
+<pre><code class="language-bash">cargo install cargo-binutils
 </code></pre>
-<p>If you see the message "TDX module initialized",
-it means the TDX module has loaded successfully.</p>
-<p>The Intel TDX environment requires TDX-enhanced versions of QEMU, KVM, GRUB,
-and other essential software for running an OS.
-Therefore, it is recommended to use a Docker image to deploy the environment.</p>
-<p>Run a TDX Docker container:</p>
-<pre><code class="language-bash">docker run -it --privileged --network=host --device=/dev/kvm asterinas/osdk:0.9.4-tdx
+<h3 id="install"><a class="header" href="#install">Install</a></h3>
+<p><code>cargo-ksdk</code> is published on <a href="https://crates.io/">crates.io</a>,
+and can be installed by running</p>
+<pre><code class="language-bash">cargo install cargo-ksdk
 </code></pre>
-<h2 id="edit-osdktoml-for-intel-tdx-support"><a class="header" href="#edit-osdktoml-for-intel-tdx-support">Edit <code>OSDK.toml</code> for Intel TDX support</a></h2>
-<p>As Intel TDX has extra requirements or restrictions for VMs,
-it demands adjusting the OSDK configurations accordingly.
-This can be easily achieved with the <code>scheme</code> feature of the OSDK,
-which provides a convenient way to override the default OSDK configurations
-for a specific environment.</p>
-<p>For example, you can append the following TDX-specific scheme to your <code>OSDK.toml</code> file.</p>
-<pre><code class="language-toml">[scheme."tdx"]
-supported_archs = ["x86_64"]
-boot.method = "grub-qcow2"
-grub.mkrescue_path = "~/tdx-tools/grub"
-grub.protocol = "linux"
-qemu.args = """\
-    -accel kvm \
-    -name process=tdxvm,debug-threads=on \
-    -m 6G \
-    -vga none \
-    -monitor pty \
-    -no-hpet \
-    -nodefaults \
-    -drive file=target/osdk/asterinas/asterinas.qcow2,if=virtio,format=qcow2 \
-    -monitor telnet:127.0.0.1:9001,server,nowait \
-    -bios /usr/share/qemu/OVMF.fd \
-    -object tdx-guest,sept-ve-disable=on,id=tdx,quote-generation-service=vsock:2:4050 \
-    -object memory-backend-memfd-private,id=ram1,size=2G \
-    -cpu host,-kvm-steal-time,pmu=off,tsc-freq=1000000000 \
-    -machine q35,kernel_irqchip=split,confidential-guest-support=tdx,memory-backend=ram1 \
-    -smp 1 \
-    -nographic \
-"""
-</code></pre>
-<p>To choose the configurations specified by the TDX scheme over the default ones,
-add the <code>--scheme</code> argument to the build, run, or test command.</p>
-<pre><code class="language-bash">cargo osdk build --scheme tdx
-cargo osdk run --scheme tdx
-cargo osdk test --scheme tdx
+<h3 id="upgrade"><a class="header" href="#upgrade">Upgrade</a></h3>
+<p>If <code>cargo-ksdk</code> is already installed,
+the tool can be upgraded by running</p>
+<pre><code class="language-bash">cargo install --force cargo-ksdk
 </code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../osdk/guide/advanced_topics.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../kstd/a-100-line-kernel.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../../osdk/reference/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../ksdk/guide/why.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -229,11 +220,11 @@ cargo osdk test --scheme tdx
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../osdk/guide/advanced_topics.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../kstd/a-100-line-kernel.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../../osdk/reference/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../ksdk/guide/why.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

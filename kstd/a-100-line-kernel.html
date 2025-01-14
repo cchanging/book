@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Example: Writing a Kernel in 100 Lines of Safe Rust - The Asterinas Book</title>
+        <title>Example: Writing a Kernel in 100 Lines of Safe Rust - The Astros Book</title>
 
 
         <!-- Custom HTML head -->
@@ -120,7 +120,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">The Asterinas Book</h1>
+                    <h1 class="menu-title">The Astros Book</h1>
 
                     <div class="right-buttons">
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
@@ -154,7 +154,7 @@
                     <main>
                         <h1 id="example-writing-a-kernel-in-about-100-lines-of-safe-rust"><a class="header" href="#example-writing-a-kernel-in-about-100-lines-of-safe-rust">Example: Writing a Kernel in About 100 Lines of Safe Rust</a></h1>
 <p>To give you a sense of
-how Asterinas OSTD enables writing kernels in safe Rust,
+how Astros KSTD enables writing kernels in safe Rust,
 we will show a new kernel in about 100 lines of safe Rust.</p>
 <p>Our new kernel will be able to run the following Hello World program.</p>
 <pre><code class="language-s"># SPDX-License-Identifier: MPL-2.0
@@ -178,7 +178,7 @@ message:
 message_end:
 </code></pre>
 <p>The assembly program above can be compiled with the following command.</p>
-<pre><code class="language-bash">gcc -static -nostdlib hello.S -o hello
+<pre><code class="language-bash">gcc -static -nkstdlib hello.S -o hello
 </code></pre>
 <p>The user program above requires our kernel to support three main features:</p>
 <ol>
@@ -188,7 +188,7 @@ message_end:
 </ol>
 <p>A sample implementation of the kernel in safe Rust is given below.
 Comments are added
-to highlight how the APIs of Asterinas OSTD enable safe kernel development.</p>
+to highlight how the APIs of Astros KSTD enable safe kernel development.</p>
 <pre><code class="language-rust">// SPDX-License-Identifier: MPL-2.0
 
 #![no_std]
@@ -202,21 +202,21 @@ use core::str;
 use alloc::sync::Arc;
 use alloc::vec;
 
-use ostd::arch::qemu::{exit_qemu, QemuExitCode};
-use ostd::cpu::UserContext;
-use ostd::mm::{
+use kstd::arch::qemu::{exit_qemu, QemuExitCode};
+use kstd::cpu::UserContext;
+use kstd::mm::{
     CachePolicy, FallibleVmRead, FallibleVmWrite, FrameAllocOptions, PageFlags, PageProperty,
     Vaddr, VmIo, VmSpace, VmWriter, PAGE_SIZE,
 };
-use ostd::prelude::*;
-use ostd::task::{Task, TaskOptions};
-use ostd::user::{ReturnReason, UserMode, UserSpace};
+use kstd::prelude::*;
+use kstd::task::{Task, TaskOptions};
+use kstd::user::{ReturnReason, UserMode, UserSpace};
 
-/// The kernel's boot and initialization process is managed by OSTD.
+/// The kernel's boot and initialization process is managed by KSTD.
 /// After the process is done, the kernel's execution environment
 /// (e.g., stack, heap, tasks) will be ready for use and the entry function
-/// labeled as `#[ostd::main]` will be called.
-#[ostd::main]
+/// labeled as `#[kstd::main]` will be called.
+#[kstd::main]
 pub fn main() {
     let program_binary = include_bytes!("../hello");
     let user_space = create_user_space(program_binary);
@@ -335,11 +335,11 @@ fn handle_syscall(user_context: &amp;mut UserContext, user_space: &amp;UserSpace
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../ostd/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../kstd/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../osdk/guide/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../ksdk/guide/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -349,11 +349,11 @@ fn handle_syscall(user_context: &amp;mut UserContext, user_space: &amp;UserSpace
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../ostd/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../kstd/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../osdk/guide/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../ksdk/guide/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

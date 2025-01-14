@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Manifest - The Asterinas Book</title>
+        <title>Manifest - The Astros Book</title>
 
 
         <!-- Custom HTML head -->
@@ -120,7 +120,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">The Asterinas Book</h1>
+                    <h1 class="menu-title">The Astros Book</h1>
 
                     <div class="right-buttons">
                         <a href="../../print.html" title="Print this book" aria-label="Print this book">
@@ -154,8 +154,8 @@
                     <main>
                         <h1 id="manifest"><a class="header" href="#manifest">Manifest</a></h1>
 <h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
-<p>The OSDK tool utilizes a manifest to define its precise behavior.
-Typically, the configuration file is named <code>OSDK.toml</code>
+<p>The KSDK tool utilizes a manifest to define its precise behavior.
+Typically, the configuration file is named <code>KSDK.toml</code>
 and is placed in the root directory of the workspace
 (the same directory as the workspace's <code>Cargo.toml</code>).
 If there is only one crate and no workspace,
@@ -166,9 +166,9 @@ one is of the workspace
 (in the same directory as the workspace's <code>Cargo.toml</code>)
 and one of the crate
 (in the same directory as the crate's <code>Cargo.toml</code>).
-OSDK will firstly try to find the crate-level manifest.
-If the crate-level manifest is found, OSDK uses it only.
-If the manifest is not found, OSDK will look into the
+KSDK will firstly try to find the crate-level manifest.
+If the crate-level manifest is found, KSDK uses it only.
+If the manifest is not found, KSDK will look into the
 workspace-level manifest.</p>
 <h2 id="configurations"><a class="header" href="#configurations">Configurations</a></h2>
 <p>Below, you will find a comprehensive version of
@@ -223,14 +223,14 @@ args = "-machine q35 -m 2G"                 # &lt;19&gt;
 <li>
 <p>The type of current crate.</p>
 <p>Optional. If not specified,
-the default value is inferred from the usage of the macro <code>#[ostd::main]</code>.
+the default value is inferred from the usage of the macro <code>#[kstd::main]</code>.
 if the macro is used, the default value is <code>kernel</code>.
 Otherwise, the default value is <code>library</code>.</p>
 <p>Possible values are <code>library</code> or <code>kernel</code>.</p>
 </li>
 <li>
 <p>The architectures that can be supported.</p>
-<p>Optional. By default OSDK supports all architectures.
+<p>Optional. By default KSDK supports all architectures.
 When building or running,
 if not specified in the CLI,
 the architecture of the host machine will be used.</p>
@@ -321,20 +321,20 @@ Some keys can appear multiple times
 while other keys can appear at most once.
 Certain keys, such as <code>-kernel</code> and <code>-initrd</code>,
 are not allowed to be set here
-as they may conflict with the settings of OSDK.</p>
+as they may conflict with the settings of KSDK.</p>
 <p>The field will be evaluated, so it is ok to use environment variables
 in the arguments (usually for paths or conditional arguments). You can
 even use this mechanism to read from files by using command replacement
 <code>$(cat path/to/your/custom/args/file)</code>.</p>
 </li>
 <li>
-<p>Special settings for running. Only take effect when running <code>cargo osdk run</code>.</p>
+<p>Special settings for running. Only take effect when running <code>cargo ksdk run</code>.</p>
 <p>By default, it inherits common options.</p>
 <p>Values set here are used to override common options.</p>
 </li>
 <li>
 <p>Special settings for testing.</p>
-<p>Similar to <code>20</code>, but only take effect when running <code>cargo osdk test</code>.</p>
+<p>Similar to <code>20</code>, but only take effect when running <code>cargo ksdk test</code>.</p>
 </li>
 <li>
 <p>The definition of customized schema.</p>
@@ -344,12 +344,12 @@ unless overridden by new options.</p>
 </li>
 </ol>
 <h3 id="example"><a class="header" href="#example">Example</a></h3>
-<p>Here is a sound, self-explanatory example which is used by OSDK
-in the Asterinas project.</p>
+<p>Here is a sound, self-explanatory example which is used by KSDK
+in the Astros project.</p>
 <p>In the script <code>./tools/qemu_args.sh</code>, the environment variables will be
 used to determine the actual set of qemu arguments.</p>
-<pre><code class="language-toml"># The OSDK manifest at the Asterinas root virtual workspace 
-# provides default OSDK settings for all packages.
+<pre><code class="language-toml"># The KSDK manifest at the Astros root virtual workspace 
+# provides default KSDK settings for all packages.
 
 # The common options for build, run and test
 [boot]
@@ -457,7 +457,7 @@ from the default scheme.</p>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../osdk/reference/commands/debug.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../ksdk/reference/commands/debug.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
@@ -471,7 +471,7 @@ from the default scheme.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../osdk/reference/commands/debug.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../ksdk/reference/commands/debug.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 

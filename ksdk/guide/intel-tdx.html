@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>cargo osdk test - The Asterinas Book</title>
+        <title>Intel TDX - The Astros Book</title>
 
 
         <!-- Custom HTML head -->
@@ -12,32 +12,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="../../../favicon.svg">
-        <link rel="shortcut icon" href="../../../favicon.png">
-        <link rel="stylesheet" href="../../../css/variables.css">
-        <link rel="stylesheet" href="../../../css/general.css">
-        <link rel="stylesheet" href="../../../css/chrome.css">
-        <link rel="stylesheet" href="../../../css/print.css" media="print">
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="../../../fonts/fonts.css">
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="../../../highlight.css">
-        <link rel="stylesheet" href="../../../tomorrow-night.css">
-        <link rel="stylesheet" href="../../../ayu-highlight.css">
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
 
         <!-- Provide site root to javascript -->
         <script>
-            var path_to_root = "../../../";
+            var path_to_root = "../../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../../toc.js"></script>
+        <script src="../../toc.js"></script>
     </head>
     <body>
     <div id="body-container">
@@ -89,7 +89,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="../../../toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
             </noscript>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -120,10 +120,10 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">The Asterinas Book</h1>
+                    <h1 class="menu-title">The Astros Book</h1>
 
                     <div class="right-buttons">
-                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
 
@@ -152,36 +152,74 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="cargo-osdk-test"><a class="header" href="#cargo-osdk-test">cargo osdk test</a></h1>
-<p><code>cargo osdk test</code> is used to
-execute kernel mode unit test by starting QEMU.
-The usage is as follows:</p>
-<pre><code class="language-bash">cargo osdk test [TESTNAME] [OPTIONS] 
+                        <h1 id="running-an-os-in-intel-tdx-env"><a class="header" href="#running-an-os-in-intel-tdx-env">Running an OS in Intel TDX env</a></h1>
+<p>The KSDK supports running your OS in an <a href="https://www.intel.com/content/www/us/en/developer/tools/trust-domain-extensions/overview.html">Intel TDX</a> environment conveniently.
+Intel TDX can provide a more secure environment for your OS.</p>
+<h2 id="prepare-the-intel-tdx-environment"><a class="header" href="#prepare-the-intel-tdx-environment">Prepare the Intel TDX Environment</a></h2>
+<p>Please make sure your server supports Intel TDX.</p>
+<p>See <a href="https://github.com/canonical/tdx/tree/noble-24.04?tab=readme-ov-file#4-setup-host-os">this guide</a>
+or other materials to enable Intel TDX in host OS.</p>
+<p>To verify the TDX host status, you can type:</p>
+<pre><code class="language-bash">dmesg | grep "TDX module initialized"
 </code></pre>
-<h2 id="arguments"><a class="header" href="#arguments">Arguments</a></h2>
-<p><code>TESTNAME</code>:
-Only run tests containing this string in their names</p>
-<h2 id="options"><a class="header" href="#options">Options</a></h2>
-<p>The options are the same as those of <code>cargo osdk build</code>.
-Refer to the <a href="build.html">documentation</a> of <code>cargo osdk build</code>
-for more details.</p>
-<h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
-<ul>
-<li>Execute tests that include <em>foo</em> in their names
-using QEMU with 3GB of memory</li>
-</ul>
-<pre><code class="language-bash">cargo osdk test foo --qemu-args="-m 3G"
+<p>The following result is an example:</p>
+<pre><code class="language-bash">[   20.507296] tdx: TDX module initialized.
+</code></pre>
+<p>If you see the message "TDX module initialized",
+it means the TDX module has loaded successfully.</p>
+<p>The Intel TDX environment requires TDX-enhanced versions of QEMU, KVM, GRUB,
+and other essential software for running an OS.
+Therefore, it is recommended to use a Docker image to deploy the environment.</p>
+<p>Run a TDX Docker container:</p>
+<pre><code class="language-bash">docker run -it --privileged --network=host --device=/dev/kvm astros/ksdk:0.9.4-tdx
+</code></pre>
+<h2 id="edit-ksdktoml-for-intel-tdx-support"><a class="header" href="#edit-ksdktoml-for-intel-tdx-support">Edit <code>KSDK.toml</code> for Intel TDX support</a></h2>
+<p>As Intel TDX has extra requirements or restrictions for VMs,
+it demands adjusting the KSDK configurations accordingly.
+This can be easily achieved with the <code>scheme</code> feature of the KSDK,
+which provides a convenient way to override the default KSDK configurations
+for a specific environment.</p>
+<p>For example, you can append the following TDX-specific scheme to your <code>KSDK.toml</code> file.</p>
+<pre><code class="language-toml">[scheme."tdx"]
+supported_archs = ["x86_64"]
+boot.method = "grub-qcow2"
+grub.mkrescue_path = "~/tdx-tools/grub"
+grub.protocol = "linux"
+qemu.args = """\
+    -accel kvm \
+    -name process=tdxvm,debug-threads=on \
+    -m 6G \
+    -vga none \
+    -monitor pty \
+    -no-hpet \
+    -nodefaults \
+    -drive file=target/ksdk/astros/astros.qcow2,if=virtio,format=qcow2 \
+    -monitor telnet:127.0.0.1:9001,server,nowait \
+    -bios /usr/share/qemu/OVMF.fd \
+    -object tdx-guest,sept-ve-disable=on,id=tdx,quote-generation-service=vsock:2:4050 \
+    -object memory-backend-memfd-private,id=ram1,size=2G \
+    -cpu host,-kvm-steal-time,pmu=off,tsc-freq=1000000000 \
+    -machine q35,kernel_irqchip=split,confidential-guest-support=tdx,memory-backend=ram1 \
+    -smp 1 \
+    -nographic \
+"""
+</code></pre>
+<p>To choose the configurations specified by the TDX scheme over the default ones,
+add the <code>--scheme</code> argument to the build, run, or test command.</p>
+<pre><code class="language-bash">cargo ksdk build --scheme tdx
+cargo ksdk run --scheme tdx
+cargo ksdk test --scheme tdx
 </code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../../osdk/reference/commands/run.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../ksdk/guide/advanced_topics.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../../../osdk/reference/commands/debug.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../ksdk/reference/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -191,11 +229,11 @@ using QEMU with 3GB of memory</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../../osdk/reference/commands/run.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../ksdk/guide/advanced_topics.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../../../osdk/reference/commands/debug.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../ksdk/reference/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -210,13 +248,13 @@ using QEMU with 3GB of memory</li>
         </script>
 
 
-        <script src="../../../elasticlunr.min.js"></script>
-        <script src="../../../mark.min.js"></script>
-        <script src="../../../searcher.js"></script>
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
 
-        <script src="../../../clipboard.min.js"></script>
-        <script src="../../../highlight.js"></script>
-        <script src="../../../book.js"></script>
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
 
         <!-- Custom JS scripts -->
 
